@@ -24,6 +24,7 @@ function useFetch() {
     const options = {
       method,
       mode: "cors",
+      credentials: "include",
       headers: { "Content-Type": "application/json" },
     };
 
