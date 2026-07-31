@@ -7,15 +7,16 @@ const routes = [
     path: "/",
     element: <App />,
     errorElement: null,
-  },
-
-  {
-    path: "sign-up",
-    element: <SignUp />,
-  },
-  {
-    path: "log-in",
-    element: <LogIn />,
+    children: [
+      {
+        path: "sign-up",
+        element: <SignUp />,
+      },
+      {
+        path: "log-in",
+        element: <LogIn />,
+      },
+    ],
   },
 ];
 
