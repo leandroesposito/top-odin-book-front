@@ -26,7 +26,7 @@ body {
 }
 
 .body {
-  width: 1126px;
+  width: min(95vw, 1126px);
   margin-left: auto;
   margin-right: auto;
 }
