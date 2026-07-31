@@ -1,5 +1,6 @@
 import App from "./App";
 import LogIn from "./components/logIn/LogIn";
+import LogOut from "./components/logOut/LogOut";
 import SignUp from "./components/signUp/SignUp";
 
 const routes = [
@@ -15,6 +16,10 @@ const routes = [
       {
         path: "log-in",
         element: <LogIn />,
+      },
+      {
+        path: "log-out",
+        element: <LogOut />,
       },
     ],
   },
