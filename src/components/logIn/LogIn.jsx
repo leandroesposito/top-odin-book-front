@@ -5,8 +5,8 @@ import FlashMessage from "../parts/FlashMessage/FlashMessage";
 import { setValidationResult } from "../parts/FormValidation";
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
-import { useNavigate } from "react-router";
-import { logIn } from "../../session/sessionManager";
+import { Navigate, useNavigate } from "react-router";
+import { isLogedIn, logIn } from "../../session/sessionManager";
 
 function LogIn() {
   const [username, setUsername] = useState("");
@@ -20,7 +20,7 @@ function LogIn() {
     if (data && data.user && success) {
       logIn(data.user);
       redirectTimeout = setTimeout(() => {
-        navigate("/home");
+        window.location.reload();
       }, 3000);
     }
 
@@ -101,6 +101,10 @@ function LogIn() {
 
   function onPasswordVisibilityClick() {
     setViewPassword(!viewPassword);
+  }
+
+  if (isLogedIn()) {
+    return <Navigate to={"/"} />;
   }
 
   return (
