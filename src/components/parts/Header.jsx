@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { getUsername, isLogedIn } from "../../session/sessionManager";
+import { getName, isLogedIn } from "../../session/sessionManager";
 import "./Header.css";
 
 function Header() {
@@ -15,7 +15,7 @@ function Header() {
           {isLogedIn() ? (
             <>
               <div className="drop-down">
-                <Link to={"/profile/me"}>{getUsername()}</Link>
+                <Link to={"/profile/me"}>{getName()}</Link>
                 <div className="drop-down-items">
                   <Link to={"/friends"}>Friends</Link>
                   <Link to={"/friends-requests"}>Friends Requests</Link>
