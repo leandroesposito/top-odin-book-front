@@ -19,17 +19,29 @@ function useFetch() {
     route,
     method = "GET",
     body = null,
+    isMultipart = false,
   ) {
     setLoading(true);
     const options = {
       method,
       mode: "cors",
       credentials: "include",
-      headers: { "Content-Type": "application/json" },
     };
 
+    if (!isMultipart) {
+      options.headers = {
+        "Content-Type": "application/json",
+      };
+    }
+
     if (body) {
-      options.body = JSON.stringify(body);
+      if (isMultipart) {
+        options.body = body;
+      } else if (body instanceof FormData) {
+        options.body = JSON.stringify(Object.fromEntries(body));
+      } else {
+        options.body = JSON.stringify(body);
+      }
     }
 
     try {
