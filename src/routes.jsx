@@ -1,6 +1,7 @@
 import App from "./App";
 import LogIn from "./components/logIn/LogIn";
 import LogOut from "./components/logOut/LogOut";
+import PostForm from "./components/postForm/PostForm";
 import ProfileForm from "./components/profileForm/ProfileForm";
 import SignUp from "./components/signUp/SignUp";
 
@@ -25,6 +26,14 @@ const routes = [
       {
         path: "profile/edit",
         element: <ProfileForm />,
+      },
+      {
+        path: "post/new",
+        element: <PostForm />,
+      },
+      {
+        path: "post/:postId/edit",
+        element: <PostForm />,
       },
     ],
   },
