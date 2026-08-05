@@ -1,0 +1,53 @@
+.chat-message {
+  position: relative;
+  background-color: var(--surface-9);
+  color: black;
+  border-radius: 1rem;
+  width: min(100%, 25rem);
+  min-width: 10rem;
+  padding: 0.5rem;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.chat-message.mine {
+  margin-left: auto;
+}
+
+.chat-message .message-user {
+  padding: 0;
+  background-color: unset;
+  color: var(--secondary-100);
+  font-weight: 600;
+}
+
+.chat-message.mine .message-user {
+  color: var(--primary-100);
+}
+
+.chat-message .message-date {
+  align-self: end;
+  font-size: 0.9rem;
+  color: #bbbbbb;
+}
+
+.chat-message .message-content {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+.chat-message:hover .delete-message-button,
+.chat-message:has(:focus-visible) .delete-message-button {
+  transform: scale(1);
+}
+
+.delete-message-button {
+  position: absolute;
+  transform: scale(0);
+  top: 0.5rem;
+  right: 0.5rem;
+}

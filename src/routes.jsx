@@ -1,4 +1,5 @@
 import App from "./App";
+import ChatsScreen from "./components/chats/ChatsScreen";
 import LogIn from "./components/logIn/LogIn";
 import LogOut from "./components/logOut/LogOut";
 import PostForm from "./components/postForm/PostForm";
@@ -34,6 +35,10 @@ const routes = [
       {
         path: "post/:postId/edit",
         element: <PostForm />,
+      },
+      {
+        path: "messages",
+        element: <ChatsScreen />,
       },
     ],
   },
