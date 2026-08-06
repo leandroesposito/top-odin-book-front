@@ -16,10 +16,13 @@ function Post(props) {
   const [deletedComments, setDeletedComments] = useState(0);
   const postIdParam = useParams().postId;
   const postId = postIdParam || props.postId;
+  const postProp = props.post;
 
   useEffect(() => {
-    makeRequest(`/posts/${postId}`, "GET");
-  }, [makeRequest, postId]);
+    if (!postProp) {
+      makeRequest(`/posts/${postId}`, "GET");
+    }
+  }, [makeRequest, postId, postProp]);
 
   function onDelete() {
     setDeleted(true);
@@ -33,7 +36,7 @@ function Post(props) {
     setViewComments(true);
   }
 
-  if (deleted || (!loading && !data && errors.length == 0)) {
+  if (deleted || (!postProp && !loading && !data && errors.length == 0)) {
     return null;
   }
 
@@ -41,7 +44,7 @@ function Post(props) {
     return <Loading />;
   }
 
-  if (!data && errors.length > 0) {
+  if (!postProp && !data && errors.length > 0) {
     return (
       <div className="flash-messages">
         {errors.map((error, index) => (
@@ -50,6 +53,8 @@ function Post(props) {
       </div>
     );
   }
+
+  const post = postProp || data.post;
 
   return (
     <div className="post">
@@ -63,47 +68,45 @@ function Post(props) {
       </div>
       <div className="author">
         <div className="avatar">
-          <a href={`/profile/${data.post.user_id}`}>
+          <a href={`/profile/${post.user_id}`}>
             <img
-              src={data.post.profile_picture_url}
-              alt={`${data.post.author}'s avatar`}
+              src={post.profile_picture_url}
+              alt={`${post.author}'s avatar`}
             />
           </a>
         </div>
         <div className="author-name">
-          <a href={`/profile/${data.post.user_id}`}>{data.post.author}</a>
+          <a href={`/profile/${post.user_id}`}>{post.author}</a>
         </div>
-        {data.post.user_id === getUserId() && (
-          <PostButtons post={data.post} onDelete={onDelete} />
+        {post.user_id === getUserId() && (
+          <PostButtons post={post} onDelete={onDelete} />
         )}
       </div>
       <div className="post-date">
-        {new Date(data.post.created_at).toLocaleString()}
+        {new Date(post.created_at).toLocaleString()}
       </div>
-      <div className="post-content">{data.post.body}</div>
-      {data !== null &&
-        typeof data.post?.pictures !== "undefined" &&
-        data.post.pictures.length > 0 && (
-          <div className="post-pictures">
-            {data.post.pictures.map((picture) => {
-              return (
-                <div className="post-picture" key={picture.id}>
-                  <img src={picture.url} />
-                </div>
-              );
-            })}
-          </div>
-        )}
+      <div className="post-content">{post.body}</div>
+      {typeof post?.pictures !== "undefined" && post.pictures.length > 0 && (
+        <div className="post-pictures">
+          {post.pictures.map((picture) => {
+            return (
+              <div className="post-picture" key={picture.id}>
+                <img src={picture.url} />
+              </div>
+            );
+          })}
+        </div>
+      )}
       <div className="post-bottom-buttons">
-        <LikeButton post={data.post} />
+        <LikeButton post={post} />
         <CommentsButton
-          commentsCount={data.post.comments_count}
+          commentsCount={post.comments_count}
           onCommentsButtonClick={onCommentsButtonClick}
           deletedComments={deletedComments}
         />
       </div>
       {viewComments && (
-        <Comments postId={postId} onDeleteComment={onDeleteComment} />
+        <Comments postId={post.id} onDeleteComment={onDeleteComment} />
       )}
     </div>
   );
