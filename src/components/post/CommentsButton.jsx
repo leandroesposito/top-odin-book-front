@@ -1,11 +1,15 @@
-function CommentsButton({ commentsCount, onCommentsButtonClick }) {
+function CommentsButton({
+  commentsCount,
+  onCommentsButtonClick,
+  deletedComments,
+}) {
   function onClick() {
     onCommentsButtonClick();
   }
 
   return (
     <button className={`comments-post-button`} onClick={onClick}>
-      Comments ({commentsCount})
+      Comments ({commentsCount - deletedComments})
     </button>
   );
 }

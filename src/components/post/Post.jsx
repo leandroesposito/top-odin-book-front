@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import Loading from "../parts/Loading/Loading";
 import FlashMessage from "../parts/FlashMessage/FlashMessage";
@@ -7,11 +7,13 @@ import { getUserId } from "../../session/sessionManager";
 import PostButtons from "./PostButtons";
 import LikeButton from "./LikeButton";
 import CommentsButton from "./CommentsButton";
+import Comments from "./comment/Comments";
 
 function Post(props) {
   const { loading, data, errors, makeRequest } = useFetch();
   const [deleted, setDeleted] = useState(false);
   const [viewComments, setViewComments] = useState(false);
+  const [deletedComments, setDeletedComments] = useState(0);
   const postIdParam = useParams().postId;
   const postId = postIdParam || props.postId;
 
@@ -23,11 +25,15 @@ function Post(props) {
     setDeleted(true);
   }
 
+  const onDeleteComment = useCallback(function () {
+    setDeletedComments((value) => value + 1);
+  }, []);
+
   function onCommentsButtonClick() {
     setViewComments(true);
   }
 
-  if (deleted) {
+  if (deleted || (!loading && !data && errors.length == 0)) {
     return null;
   }
 
@@ -35,7 +41,7 @@ function Post(props) {
     return <Loading />;
   }
 
-  if (!data && errors) {
+  if (!data && errors.length > 0) {
     return (
       <div className="flash-messages">
         {errors.map((error, index) => (
@@ -93,9 +99,12 @@ function Post(props) {
         <CommentsButton
           commentsCount={data.post.comments_count}
           onCommentsButtonClick={onCommentsButtonClick}
+          deletedComments={deletedComments}
         />
       </div>
-      {viewComments && "Comments"}
+      {viewComments && (
+        <Comments postId={postId} onDeleteComment={onDeleteComment} />
+      )}
     </div>
   );
 }
