@@ -20,7 +20,7 @@ function PostForm() {
     let redirectTimeout = null;
     if (success && data.message) {
       redirectTimeout = setTimeout(() => {
-        window.location.reload();
+        navigate(`/post/${postId}`);
       }, 10);
     }
 
@@ -29,7 +29,7 @@ function PostForm() {
         clearTimeout(redirectTimeout);
       }
     };
-  }, [data, success, navigate]);
+  }, [data, success, postId, navigate]);
 
   useEffect(() => {
     if (postId) {
