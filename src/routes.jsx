@@ -3,6 +3,7 @@ import ChatsScreen from "./components/chats/ChatsScreen";
 import LogIn from "./components/logIn/LogIn";
 import LogOut from "./components/logOut/LogOut";
 import Post from "./components/post/Post";
+import Posts from "./components/post/Posts";
 import PostForm from "./components/postForm/PostForm";
 import Profile from "./components/profile/Profile";
 import ProfileForm from "./components/profileForm/ProfileForm";
@@ -49,6 +50,10 @@ const routes = [
       {
         path: "messages",
         element: <ChatsScreen />,
+      },
+      {
+        path: "feed",
+        element: <Posts />,
       },
     ],
   },
