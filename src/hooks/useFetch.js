@@ -49,13 +49,13 @@ function useFetch() {
       const response = await fetch(endpoint, options);
       const json = await response.json();
 
-      const { ...newData } = json;
+      const { errors: newErrors, success: newSuccess, ...newData } = json;
 
-      if (json.errors) {
-        setErrors((errors) => [...errors, ...json.errors]);
+      if (newErrors) {
+        setErrors((errors) => [...errors, ...newErrors]);
       }
-      if (typeof json.success !== "undefined") {
-        setSuccess(json.success);
+      if (newSuccess !== "undefined") {
+        setSuccess(newSuccess);
       }
       if (Object.keys(newData).length > 0) {
         setData(newData);
