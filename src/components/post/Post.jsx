@@ -41,9 +41,6 @@ function Post(props) {
         {errors.map((error, index) => (
           <FlashMessage message={error} type={"error"} key={index} />
         ))}
-        {data !== null && typeof data.message !== "undefined" && (
-          <FlashMessage message={data.message} type={"success"} />
-        )}
       </div>
     );
   }
@@ -63,7 +60,7 @@ function Post(props) {
           <a href={`/profile/${data.post.user_id}`}>
             <img
               src={data.post.profile_picture_url}
-              alt={`${data.post.profile_picture_url}'s avatar`}
+              alt={`${data.post.author}'s avatar`}
             />
           </a>
         </div>
