@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 import FlashMessage from "../parts/FlashMessage/FlashMessage";
 import { useParams } from "react-router";
 import Posts from "../post/Posts";
-import { getUserId } from "../../session/sessionManager";
+import { getUserId, isLogedIn } from "../../session/sessionManager";
+import RelationsButtons from "./RelationsButtons";
 
 function Profile() {
   const { data, errors, makeRequest } = useFetch();
@@ -12,6 +13,13 @@ function Profile() {
   useEffect(() => {
     makeRequest(`/profiles/${userId}`, "GET");
   }, [makeRequest, userId]);
+
+  const onRelationButtonClick = useCallback(
+    function onRelationButtonClick() {
+      makeRequest(`/profiles/${userId}`, "GET");
+    },
+    [makeRequest, userId],
+  );
 
   return (
     <div className="profile">
@@ -28,10 +36,19 @@ function Profile() {
           <div className="profile-description">
             <div className="name">
               {data.profile.name}
-              {data.profile.userId === getUserId() && (
-                <a href="/profile/edit" className="button">
-                  Edit profile
-                </a>
+              {isLogedIn() && (
+                <div className="buttons">
+                  {data.profile.userId === getUserId() ? (
+                    <a href="/profile/edit" className="button">
+                      Edit profile
+                    </a>
+                  ) : (
+                    <RelationsButtons
+                      onButtonClick={onRelationButtonClick}
+                      profile={data.profile}
+                    />
+                  )}
+                </div>
               )}
             </div>
             <div className="profession">{data.profile.profession}</div>
