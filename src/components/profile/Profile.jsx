@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 import FlashMessage from "../parts/FlashMessage/FlashMessage";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import Posts from "../post/Posts";
 import { getUserId, isLogedIn } from "../../session/sessionManager";
 import RelationsButtons from "./RelationsButtons";
@@ -9,6 +9,7 @@ import RelationsButtons from "./RelationsButtons";
 function Profile() {
   const { data, errors, makeRequest } = useFetch();
   const { userId } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     makeRequest(`/profiles/${userId}`, "GET");
@@ -20,6 +21,12 @@ function Profile() {
     },
     [makeRequest, userId],
   );
+
+  function onMessageClick(profile) {
+    navigate("/messages", {
+      state: { currentChat: { id: profile.userId, name: profile.name } },
+    });
+  }
 
   return (
     <div className="profile">
@@ -43,10 +50,21 @@ function Profile() {
                       Edit profile
                     </a>
                   ) : (
-                    <RelationsButtons
-                      onButtonClick={onRelationButtonClick}
-                      profile={data.profile}
-                    />
+                    <>
+                      {data.profile.isFriend && (
+                        <button
+                          onClick={() => {
+                            onMessageClick(data.profile);
+                          }}
+                        >
+                          Message
+                        </button>
+                      )}
+                      <RelationsButtons
+                        onButtonClick={onRelationButtonClick}
+                        profile={data.profile}
+                      />
+                    </>
                   )}
                 </div>
               )}
