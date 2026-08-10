@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 import FlashMessage from "../parts/FlashMessage/FlashMessage";
-import { useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import Posts from "../post/Posts";
 import { getUserId, isLogedIn } from "../../session/sessionManager";
 import RelationsButtons from "./RelationsButtons";
@@ -46,9 +46,9 @@ function Profile() {
               {isLogedIn() && (
                 <div className="buttons">
                   {data.profile.userId === getUserId() ? (
-                    <a href="/profile/edit" className="button">
+                    <Link to="/profile/edit" className="button">
                       Edit profile
-                    </a>
+                    </Link>
                   ) : (
                     <>
                       {data.profile.isFriend && (

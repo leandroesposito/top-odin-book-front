@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getUserId } from "../../../session/sessionManager";
 import useFetch from "../../../hooks/useFetch";
 import FlashMessage from "../../parts/FlashMessage/FlashMessage";
+import { Link } from "react-router";
 
 export default function Comment({ comment, onDeleteComment }) {
   const [deleted, setDeleted] = useState(false);
@@ -40,15 +41,15 @@ export default function Comment({ comment, onDeleteComment }) {
     <div className="comment">
       <div className="author">
         <div className="avatar">
-          <a href={`/profile/${comment.user_id}`}>
+          <Link to={`/profile/${comment.user_id}`}>
             <img
               src={comment.profile_picture_url}
               alt={`${comment.author}'s avatar`}
             />
-          </a>
+          </Link>
         </div>
         <div className="author-name">
-          <a href={`/profile/${comment.user_id}`}>{comment.author}</a>
+          <Link to={`/profile/${comment.user_id}`}>{comment.author}</Link>
         </div>
         {comment.user_id === getUserId() && (
           <div className="buttons">

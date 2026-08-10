@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import Loading from "../parts/Loading/Loading";
 import FlashMessage from "../parts/FlashMessage/FlashMessage";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { getUserId } from "../../session/sessionManager";
 import PostButtons from "./PostButtons";
 import LikeButton from "./LikeButton";
@@ -68,15 +68,15 @@ function Post(props) {
       </div>
       <div className="author">
         <div className="avatar">
-          <a href={`/profile/${post.user_id}`}>
+          <Link to={`/profile/${post.user_id}`}>
             <img
               src={post.profile_picture_url}
               alt={`${post.author}'s avatar`}
             />
-          </a>
+          </Link>
         </div>
         <div className="author-name">
-          <a href={`/profile/${post.user_id}`}>{post.author}</a>
+          <Link to={`/profile/${post.user_id}`}>{post.author}</Link>
         </div>
         {post.user_id === getUserId() && (
           <PostButtons post={post} onDelete={onDelete} />

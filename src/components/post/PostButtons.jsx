@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
+import { Link } from "react-router";
 
 function PostButtons({ post, onDelete }) {
   const { loading, success, errors, makeRequest } = useFetch();
@@ -31,7 +32,7 @@ function PostButtons({ post, onDelete }) {
       >
         Delete
       </button>
-      <a href={`/post/${post.id}/edit`}>Edit</a>
+      <Link to={`/post/${post.id}/edit`}>Edit</Link>
     </div>
   );
 }
