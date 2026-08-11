@@ -1,5 +1,7 @@
 import App from "./App";
 import ChatsScreen from "./components/chats/ChatsScreen";
+import Friends from "./components/friends/Friends";
+import FriendsRequests from "./components/friends/FriendsRequests";
 import LogIn from "./components/logIn/LogIn";
 import LogOut from "./components/logOut/LogOut";
 import Post from "./components/post/Post";
@@ -54,6 +56,14 @@ const routes = [
       {
         path: "feed",
         element: <Posts />,
+      },
+      {
+        path: "friends",
+        element: <Friends />,
+      },
+      {
+        path: "friends-requests",
+        element: <FriendsRequests />,
       },
     ],
   },
