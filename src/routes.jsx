@@ -58,7 +58,7 @@ const routes = [
         element: <Posts />,
       },
       {
-        path: "friends",
+        path: "friends/:userId?",
         element: <Friends />,
       },
       {

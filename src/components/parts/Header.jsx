@@ -17,7 +17,7 @@ function Header() {
               <div className="drop-down">
                 <Link to={`/profile/${getUserId()}`}>{getName()}</Link>
                 <div className="drop-down-items">
-                  <Link to={`/friends/${getUserId()}`}>Friends</Link>
+                  <Link to={`/friends`}>Friends</Link>
                   <Link to={"/friends-requests"}>Friends Requests</Link>
                   <Link to={"/messages"}>Messages</Link>
                   <Link to={"/log-out"}>Log out</Link>

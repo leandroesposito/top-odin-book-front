@@ -3,10 +3,12 @@ import useFetch from "../../hooks/useFetch";
 import Loading from "../parts/Loading/Loading";
 import FlashMessage from "../parts/FlashMessage/FlashMessage";
 import Friend from "./Friend";
-import { Link } from "react-router";
+import { Link, useParams } from "react-router";
+import { getUserId, isLogedIn } from "../../session/sessionManager";
 
-export default function Friends({ userId }) {
+export default function Friends() {
   const { loading, errors, data, makeRequest } = useFetch();
+  const { userId } = useParams();
 
   useEffect(() => {
     makeRequest(`/friends/${userId ?? ""}`);
@@ -24,12 +26,45 @@ export default function Friends({ userId }) {
           ))}
         </div>
       ) : (
-        <div className="friends">
-          {Array.isArray(data?.friends) &&
-            data.friends.map((user) => {
-              return <Friend user={user} key={user.id} />;
-            })}
-        </div>
+        <>
+          <h2>
+            {typeof data?.user !== "undefined"
+              ? isLogedIn() && data.user.id === getUserId()
+                ? "My "
+                : `${data.user.name}'s `
+              : ""}
+            Friends
+          </h2>
+          <div className="friends">
+            {Array.isArray(data?.friends) ? (
+              data.friends.length > 0 ? (
+                data.friends.map((user) => {
+                  return <Friend user={user} key={user.id} />;
+                })
+              ) : (
+                <>
+                  <div>
+                    Your friends list is empty, frind friends{" "}
+                    <Link to={"/find"}>Here</Link>
+                  </div>
+                </>
+              )
+            ) : null}
+          </div>
+          {typeof userId === "undefined" && (
+            <>
+              <h2> Add more friends </h2>
+              <div className="users-list">
+                {Array.isArray(data?.notFriends) &&
+                  data.notFriends.map((user) => {
+                    return (
+                      <Friend user={user} key={user.id} isFriend={false} />
+                    );
+                  })}
+              </div>
+            </>
+          )}
+        </>
       )}
     </>
   );
