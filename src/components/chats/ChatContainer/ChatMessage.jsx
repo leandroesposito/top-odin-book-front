@@ -4,7 +4,7 @@ import "./ChatMessage.css";
 import FlashMessage from "../../parts/FlashMessage/FlashMessage";
 
 export default function ChatMessage({ id, userId, body, createdAt, pictures }) {
-  const { loading, data, errors, makeRequest } = useFetch();
+  const { loading, success, errors, makeRequest } = useFetch();
 
   function onDelete() {
     makeRequest(`/messages/${id}`, "DELETE");
@@ -12,8 +12,8 @@ export default function ChatMessage({ id, userId, body, createdAt, pictures }) {
 
   const isMine = userId === getUserId();
 
-  if (data && data.success) {
-    // data.success means message is deleted
+  if (success) {
+    // success means message is deleted
     return null;
   }
 
