@@ -20,7 +20,7 @@ function PostForm() {
     let redirectTimeout = null;
     if (success && data.message) {
       redirectTimeout = setTimeout(() => {
-        navigate(`/post/${postId}`);
+        navigate(`/post/${postId || data.post?.id}`);
       }, 10);
     }
 
