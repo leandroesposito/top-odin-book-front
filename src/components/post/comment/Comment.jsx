@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getUserId } from "../../../session/sessionManager";
+import { getUserId, isLogedIn } from "../../../session/sessionManager";
 import useFetch from "../../../hooks/useFetch";
 import FlashMessage from "../../parts/FlashMessage/FlashMessage";
 import { Link } from "react-router";
@@ -51,7 +51,7 @@ export default function Comment({ comment, onDeleteComment }) {
         <div className="author-name">
           <Link to={`/profile/${comment.user_id}`}>{comment.author}</Link>
         </div>
-        {comment.user_id === getUserId() && (
+        {isLogedIn() && comment.user_id === getUserId() && (
           <div className="buttons">
             <button disabled={loading} onClick={onDeleteClick}>
               Delete

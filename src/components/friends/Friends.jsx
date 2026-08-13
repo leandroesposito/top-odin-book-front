@@ -3,7 +3,7 @@ import useFetch from "../../hooks/useFetch";
 import Loading from "../parts/Loading/Loading";
 import FlashMessage from "../parts/FlashMessage/FlashMessage";
 import Friend from "./Friend";
-import { Link, useParams } from "react-router";
+import { Link, Navigate, useParams } from "react-router";
 import { getUserId, isLogedIn } from "../../session/sessionManager";
 
 export default function Friends() {
@@ -14,9 +14,15 @@ export default function Friends() {
     makeRequest(`/friends/${userId ?? ""}`);
   }, [makeRequest, userId]);
 
+  if (!userId && !isLogedIn()) {
+    return <Navigate to={"/"} />;
+  }
+
   return (
     <>
-      <Link to={"/friends-requests"}>Friends requests</Link>
+      {isLogedIn() && !userId && (
+        <Link to={"/friends-requests"}>Friends requests</Link>
+      )}
       {!loading && !data && errors.length == 0 ? null : loading ? (
         <Loading />
       ) : !data && errors.length > 0 ? (

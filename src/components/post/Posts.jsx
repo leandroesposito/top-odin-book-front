@@ -3,6 +3,8 @@ import useFetch from "../../hooks/useFetch";
 import Loading from "../parts/Loading/Loading";
 import FlashMessage from "../parts/FlashMessage/FlashMessage";
 import Post from "./Post";
+import { isLogedIn } from "../../session/sessionManager";
+import { Navigate } from "react-router";
 
 export default function Posts({ userId }) {
   const { loading, errors, data, makeRequest } = useFetch();
@@ -14,6 +16,10 @@ export default function Posts({ userId }) {
       makeRequest(`/posts/feed`);
     }
   }, [makeRequest, userId]);
+
+  if (!userId && !isLogedIn()) {
+    return <Navigate to={"/"} />;
+  }
 
   if (!loading && !data && errors.length == 0) {
     return null;

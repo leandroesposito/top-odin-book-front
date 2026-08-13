@@ -3,7 +3,7 @@ import useFetch from "../../hooks/useFetch";
 import Loading from "../parts/Loading/Loading";
 import FlashMessage from "../parts/FlashMessage/FlashMessage";
 import { Link, useParams } from "react-router";
-import { getUserId } from "../../session/sessionManager";
+import { getUserId, isLogedIn } from "../../session/sessionManager";
 import PostButtons from "./PostButtons";
 import LikeButton from "./LikeButton";
 import CommentsButton from "./CommentsButton";
@@ -78,7 +78,7 @@ function Post(props) {
         <div className="author-name">
           <Link to={`/profile/${post.user_id}`}>{post.author}</Link>
         </div>
-        {post.user_id === getUserId() && (
+        {isLogedIn() && post.user_id === getUserId() && (
           <PostButtons post={post} onDelete={onDelete} />
         )}
       </div>

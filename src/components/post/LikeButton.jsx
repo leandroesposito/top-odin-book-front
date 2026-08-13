@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
+import { isLogedIn } from "../../session/sessionManager";
 
 function LikeButton({ post }) {
   const { loading, data, errors, makeRequest } = useFetch();
@@ -25,6 +26,10 @@ function LikeButton({ post }) {
     } else {
       makeRequest(`/posts/${post.id}/like`, "POST");
     }
+  }
+
+  if (!isLogedIn()) {
+    return null;
   }
 
   return (

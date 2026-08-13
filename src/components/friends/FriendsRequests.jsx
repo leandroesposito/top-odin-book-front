@@ -2,8 +2,9 @@ import { useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 import Loading from "../parts/Loading/Loading";
 import FlashMessage from "../parts/FlashMessage/FlashMessage";
-import { Link } from "react-router";
+import { Link, Navigate } from "react-router";
 import FriendRequest from "./FriendRequest";
+import { isLogedIn } from "../../session/sessionManager";
 
 export default function FriendsRequests() {
   const { loading, errors, data, makeRequest } = useFetch();
@@ -11,6 +12,10 @@ export default function FriendsRequests() {
   useEffect(() => {
     makeRequest("/users/me/friends-requests");
   }, [makeRequest]);
+
+  if (!isLogedIn()) {
+    return <Navigate to={"/"} />;
+  }
 
   return (
     <>
