@@ -3,6 +3,7 @@ import useFetch from "../../hooks/useFetch";
 import Loading from "../parts/Loading/Loading";
 import FlashMessage from "../parts/FlashMessage/FlashMessage";
 import Post from "./Post";
+import PostForm from "../postForm/PostForm";
 import { isLogedIn } from "../../session/sessionManager";
 import { Navigate } from "react-router";
 
@@ -40,11 +41,14 @@ export default function Posts({ userId }) {
   }
 
   return (
-    <div className="posts">
-      {Array.isArray(data?.posts) &&
-        data.posts.map((post) => {
-          return <Post post={post} key={post.id} />;
-        })}
-    </div>
+    <>
+      {typeof userId === "undefined" && <PostForm />}
+      <div className="posts">
+        {Array.isArray(data?.posts) &&
+          data.posts.map((post) => {
+            return <Post post={post} key={post.id} />;
+          })}
+      </div>
+    </>
   );
 }
