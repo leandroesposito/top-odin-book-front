@@ -24,7 +24,7 @@ function PostButtons({ post, onDelete }) {
   }
 
   return (
-    <div className="post-buttons">
+    <div className="post-buttons buttons">
       <button
         className="delete-post-button"
         disabled={loading}
