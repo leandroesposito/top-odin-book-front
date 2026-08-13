@@ -21,6 +21,7 @@ function Header() {
                 <div className="drop-down-items">
                   <Link to={`/friends`}>Friends</Link>
                   <Link to={"/friends-requests"}>Friends Requests</Link>
+                  <Link to={"/suggested"}>Suggested</Link>
                   <Link to={"/messages"}>Messages</Link>
                   <Link to={"/log-out"}>Log out</Link>
                 </div>

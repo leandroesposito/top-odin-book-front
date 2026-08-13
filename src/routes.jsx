@@ -2,6 +2,7 @@ import App from "./App";
 import ChatsScreen from "./components/chats/ChatsScreen";
 import Friends from "./components/friends/Friends";
 import FriendsRequests from "./components/friends/FriendsRequests";
+import Suggested from "./components/friends/Suggested";
 import LogIn from "./components/logIn/LogIn";
 import LogOut from "./components/logOut/LogOut";
 import Post from "./components/post/Post";
@@ -64,6 +65,10 @@ const routes = [
       {
         path: "friends-requests",
         element: <FriendsRequests />,
+      },
+      {
+        path: "suggested",
+        element: <Suggested />,
       },
     ],
   },
