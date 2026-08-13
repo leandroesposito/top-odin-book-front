@@ -10,6 +10,7 @@ import Posts from "./components/post/Posts";
 import PostForm from "./components/postForm/PostForm";
 import Profile from "./components/profile/Profile";
 import ProfileForm from "./components/profileForm/ProfileForm";
+import Search from "./components/search/Search";
 import SignUp from "./components/signUp/SignUp";
 
 const routes = [
@@ -69,6 +70,10 @@ const routes = [
       {
         path: "suggested",
         element: <Suggested />,
+      },
+      {
+        path: "search",
+        element: <Search />,
       },
     ],
   },
