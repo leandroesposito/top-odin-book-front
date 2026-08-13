@@ -61,8 +61,8 @@ export default function Friends() {
             <>
               <h2> Add more friends </h2>
               <div className="users-list">
-                {Array.isArray(data?.notFriends) &&
-                  data.notFriends.map((user) => {
+                {Array.isArray(data?.suggestedUsers) &&
+                  data.suggestedUsers.map((user) => {
                     return (
                       <Friend user={user} key={user.id} isFriend={false} />
                     );
