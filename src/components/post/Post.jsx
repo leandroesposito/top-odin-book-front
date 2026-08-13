@@ -83,7 +83,9 @@ function Post(props) {
         )}
       </div>
       <div className="post-date">
-        {new Date(post.created_at).toLocaleString()}
+        <Link to={`/post/${post.id}`}>
+          {new Date(post.created_at).toLocaleString()}
+        </Link>
       </div>
       <div className="post-content">{post.body}</div>
       {typeof post?.pictures !== "undefined" && post.pictures.length > 0 && (
