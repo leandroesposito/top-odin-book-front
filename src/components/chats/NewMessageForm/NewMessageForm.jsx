@@ -15,7 +15,7 @@ export default function NewMessageForm({ currentChat }) {
   }
 
   function validateBody() {
-    const bodyElem = document.querySelector("textarea#body");
+    const bodyElem = document.querySelector("textarea#body.message-body");
     const picturesInput = getPicturesInput();
 
     if (bodyElem.value.length > 250) {
@@ -114,6 +114,7 @@ export default function NewMessageForm({ currentChat }) {
         encType="multipart/form-data"
       >
         <textarea
+          className="message-body"
           aria-label="message"
           type="text"
           name="body"

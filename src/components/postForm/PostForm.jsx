@@ -47,24 +47,27 @@ function PostForm() {
   }, [data]);
 
   function validateBody() {
-    const input = document.querySelector("textarea#body");
-    if (input.validity.valueMissing) {
-      setValidationResult(input, "Message can't be empty.");
-    } else if (input.validity.tooLong) {
-      setValidationResult(
-        input,
-        "Message can't be longer than 500 characters.",
+    const bodyElem = document.querySelector("textarea#body.post-body");
+    const picturesInput = getPicturesInput();
+
+    if (bodyElem.value.length > 500) {
+      bodyElem.setCustomValidity(
+        "Message must be between 0 and 500 characters inclusive.",
       );
+      return false;
     } else {
-      setValidationResult(input, "");
-      return true;
+      bodyElem.setCustomValidity("");
     }
 
-    return false;
+    if (bodyElem.value.trim() === "" && picturesInput.files.length === 0) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   function getPicturesInput() {
-    return document.querySelector("input#pictures");
+    return document.querySelector("input#pictures.post-pictures");
   }
 
   function validatePictures() {
@@ -133,6 +136,7 @@ function PostForm() {
           <FormRow>
             <label htmlFor="name">What are you thinking?</label> <Required />
             <textarea
+              className="post-body"
               type="text"
               name="body"
               id="body"
@@ -140,8 +144,7 @@ function PostForm() {
               onBlur={validateBody}
               maxLength={500}
               defaultValue={body}
-              rows={15}
-              required
+              rows={4}
             />
           </FormRow>
           {pictures !== null &&
@@ -167,6 +170,7 @@ function PostForm() {
           <FormRow>
             <label htmlFor="pictures">Pictures</label>
             <input
+              className="post-pictures"
               type="file"
               name="pictures"
               id="pictures"
