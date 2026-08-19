@@ -3,6 +3,7 @@ import useFetch from "../../hooks/useFetch";
 import Loading from "../parts/Loading/Loading";
 import FlashMessages from "../parts/FlashMessage/FlashMessages";
 import { isLogedIn } from "../../session/sessionManager";
+import Friend from "./Friend";
 
 export default function FriendsRequests() {
   const { loading, errors, data, makeRequest } = useFetch();
@@ -28,9 +29,7 @@ export default function FriendsRequests() {
           {Array.isArray(data?.received) && data.received.length > 0 ? (
             <div className="friends-requests users-list">
               {data.received.map((user) => {
-                return (
-                  <FriendRequest user={user} key={user.id} isReceived={true} />
-                );
+                return <Friend user={user} key={user.id} />;
               })}
             </div>
           ) : (
@@ -41,9 +40,7 @@ export default function FriendsRequests() {
           {Array.isArray(data?.sent) && data.sent.length > 0 ? (
             <div className="friends-requests users-list">
               {data.sent.map((user) => {
-                return (
-                  <FriendRequest user={user} key={user.id} isSent={true} />
-                );
+                return <Friend user={user} key={user.id} />;
               })}
             </div>
           ) : (
