@@ -1,5 +1,8 @@
-function logIn({ id, username, name }) {
-  localStorage.setItem("user", JSON.stringify({ id, username, name }));
+function logIn({ id, username, name, profile_picture_url }) {
+  localStorage.setItem(
+    "user",
+    JSON.stringify({ id, username, name, profile_picture_url }),
+  );
 }
 
 function logOut() {
@@ -33,4 +36,18 @@ function getUsername() {
 function getName() {
   return getUser().name;
 }
-export { logIn, logOut, getUser, isLogedIn, getUserId, getUsername, getName };
+
+function getProfilePictureUrl() {
+  return getUser().profile_picture_url;
+}
+
+export {
+  logIn,
+  logOut,
+  getUser,
+  isLogedIn,
+  getUserId,
+  getUsername,
+  getName,
+  getProfilePictureUrl,
+};
