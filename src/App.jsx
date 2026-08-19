@@ -2,6 +2,7 @@ import { Navigate, Outlet, useLocation } from "react-router";
 import "./App.css";
 import Header from "./components/parts/Header";
 import { isLogedIn } from "./session/sessionManager";
+import Sidebar from "./components/parts/Sidebar";
 
 function App() {
   const location = useLocation();
@@ -19,7 +20,10 @@ function App() {
     <>
       <Header />
       <div className="body">
-        <Outlet />
+        <Sidebar />
+        <div className="main">
+          <Outlet />
+        </div>
       </div>
     </>
   );
