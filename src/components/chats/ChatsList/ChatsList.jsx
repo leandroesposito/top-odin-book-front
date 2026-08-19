@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import useFetch from "../../../hooks/useFetch";
 import ChatItem from "./ChatItem";
-import FlashMessage from "../../parts/FlashMessage/FlashMessage";
 import Loading from "../../parts/Loading/Loading";
+import FlashMessages from "../../parts/FlashMessage/FlashMessages";
 
 export default function ChatsList({ onChatClick, currentChat }) {
   const { loading, data, errors, makeRequest } = useFetch();
@@ -64,10 +64,7 @@ export default function ChatsList({ onChatClick, currentChat }) {
         <h2>Chats</h2>
       </div>
       {loading && data === null && <Loading size={4} />}
-      {errors.length > 0 &&
-        errors.map((e, index) => {
-          return <FlashMessage type={"error"} message={e} key={index} />;
-        })}
+      <FlashMessages errors={errors} />
       {data !== null &&
         data.chats.length > 0 &&
         data.chats.map((chat) => {

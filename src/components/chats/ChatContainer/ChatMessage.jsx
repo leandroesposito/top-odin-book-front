@@ -1,7 +1,7 @@
 import useFetch from "../../../hooks/useFetch";
 import { getUserId } from "../../../session/sessionManager";
 import "./ChatMessage.css";
-import FlashMessage from "../../parts/FlashMessage/FlashMessage";
+import FlashMessages from "../../parts/FlashMessage/FlashMessages";
 
 export default function ChatMessage({ id, userId, body, createdAt, pictures }) {
   const { loading, success, errors, makeRequest } = useFetch();
@@ -24,9 +24,7 @@ export default function ChatMessage({ id, userId, body, createdAt, pictures }) {
           return <img src={p.url} key={p.id} />;
         })}
       <pre className="message-content">{body}</pre>
-      {errors.map((error, index) => (
-        <FlashMessage message={error} type={"error"} key={index} />
-      ))}
+      <FlashMessages errors={errors} />
       <div className="message-date">{new Date(createdAt).toLocaleString()}</div>
       {isMine && (
         <button

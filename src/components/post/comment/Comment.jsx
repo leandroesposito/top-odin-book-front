@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getUserId, isLogedIn } from "../../../session/sessionManager";
 import useFetch from "../../../hooks/useFetch";
-import FlashMessage from "../../parts/FlashMessage/FlashMessage";
+import FlashMessages from "../../parts/FlashMessage/FlashMessages";
 import { Link } from "react-router";
 
 export default function Comment({ comment, onDeleteComment }) {
@@ -28,13 +28,7 @@ export default function Comment({ comment, onDeleteComment }) {
   }
 
   if (!data && errors.length > 0) {
-    return (
-      <div className="flash-messages">
-        {errors.map((error, index) => (
-          <FlashMessage message={error} type={"error"} key={index} />
-        ))}
-      </div>
-    );
+    return <FlashMessages errors={errors} />;
   }
 
   return (

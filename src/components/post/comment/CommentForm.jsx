@@ -1,6 +1,6 @@
 import FormRow from "../../parts/FormRow";
 import Loading from "../../parts/Loading/Loading";
-import FlashMessage from "../../parts/FlashMessage/FlashMessage";
+import FlashMessages from "../../parts/FlashMessage/FlashMessages";
 import { setValidationResult } from "../../parts/FormValidation";
 import { useEffect } from "react";
 import useFetch from "../../../hooks/useFetch";
@@ -84,11 +84,7 @@ function CommentForm({ postId, onNewComment }) {
           </div>
           {loading && <Loading size={4} />}
         </form>
-        <div className="flash-messages">
-          {errors.map((error, index) => (
-            <FlashMessage message={error} type={"error"} key={index} />
-          ))}
-        </div>
+        <FlashMessages errors={errors} />
       </div>
     </>
   );

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 import Loading from "../parts/Loading/Loading";
-import FlashMessage from "../parts/FlashMessage/FlashMessage";
+import FlashMessages from "../parts/FlashMessage/FlashMessages";
 import Friend from "./Friend";
 import { Link, Navigate, useParams } from "react-router";
 import { getUserId, isLogedIn } from "../../session/sessionManager";
@@ -26,11 +26,7 @@ export default function Friends() {
       {!loading && !data && errors.length == 0 ? null : loading ? (
         <Loading />
       ) : !data && errors.length > 0 ? (
-        <div className="flash-messages">
-          {errors.map((error, index) => (
-            <FlashMessage message={error} type={"error"} key={index} />
-          ))}
-        </div>
+        <FlashMessages errors={errors} />
       ) : (
         <>
           <h2>

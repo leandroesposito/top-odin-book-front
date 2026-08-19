@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import useFetch from "../../../hooks/useFetch";
-import FlashMessage from "../../parts/FlashMessage/FlashMessage";
+import FlashMessages from "../../parts/FlashMessage/FlashMessages";
 import "./NewMessageForm.css";
 
 export default function NewMessageForm({ currentChat }) {
@@ -103,11 +103,7 @@ export default function NewMessageForm({ currentChat }) {
 
   return (
     <div className="new-message-form-container">
-      <div className="flash-messages">
-        {errors.map((error, index) => (
-          <FlashMessage message={error} type={"error"} key={index} />
-        ))}
-      </div>
+      <FlashMessages errors={errors} />
       <form
         onSubmit={onSubmit}
         className="mew-message-form"

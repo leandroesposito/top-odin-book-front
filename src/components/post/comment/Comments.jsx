@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
 import useFetch from "../../../hooks/useFetch";
 import Loading from "../../parts/Loading/Loading";
-import FlashMessage from "../../parts/FlashMessage/FlashMessage";
+import FlashMessages from "../../parts/FlashMessage/FlashMessages";
 import Comment from "./Comment";
 import CommentForm from "./CommentForm";
 
@@ -21,25 +21,12 @@ export default function Comments({ postId, onDeleteComment }) {
   }
 
   if (!data && errors) {
-    return (
-      <div className="flash-messages">
-        {errors.map((error, index) => (
-          <FlashMessage message={error} type={"error"} key={index} />
-        ))}
-      </div>
-    );
+    return <FlashMessages errors={errors} />;
   }
 
   return (
     <div className="comments">
-      <div className="flash-messages">
-        {errors.map((error, index) => (
-          <FlashMessage message={error} type={"error"} key={index} />
-        ))}
-        {data !== null && typeof data.message !== "undefined" && (
-          <FlashMessage message={data.message} type={"success"} />
-        )}
-      </div>
+      <FlashMessages data={data} errors={errors} />
       <CommentForm postId={postId} onNewComment={reloadComments} />
       {typeof data?.comments !== "undefined" &&
         data.comments.map((comment) => {

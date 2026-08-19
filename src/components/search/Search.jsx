@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import Friend from "../friends/Friend";
-import FlashMessage from "../parts/FlashMessage/FlashMessage";
+import FlashMessages from "../parts/FlashMessage/FlashMessages";
 import Loading from "../parts/Loading/Loading";
 
 export default function Search() {
@@ -39,11 +39,7 @@ export default function Search() {
       {!loading && !data && errors.length == 0 ? null : loading ? (
         <Loading />
       ) : !data && errors.length > 0 ? (
-        <div className="flash-messages">
-          {errors.map((error, index) => (
-            <FlashMessage message={error} type={"error"} key={index} />
-          ))}
-        </div>
+        <FlashMessages errors={errors} />
       ) : (
         <>
           <div className="results users-list">

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 import Loading from "../parts/Loading/Loading";
-import FlashMessage from "../parts/FlashMessage/FlashMessage";
+import FlashMessages from "../parts/FlashMessage/FlashMessages";
 import Post from "./Post";
 import PostForm from "../postForm/PostForm";
 import { isLogedIn } from "../../session/sessionManager";
@@ -31,13 +31,7 @@ export default function Posts({ userId }) {
   }
 
   if (!data && errors.length > 0) {
-    return (
-      <div className="flash-messages">
-        {errors.map((error, index) => (
-          <FlashMessage message={error} type={"error"} key={index} />
-        ))}
-      </div>
-    );
+    return <FlashMessages errors={errors} />;
   }
 
   return (

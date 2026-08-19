@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import Loading from "../parts/Loading/Loading";
-import FlashMessage from "../parts/FlashMessage/FlashMessage";
+import FlashMessages from "../parts/FlashMessage/FlashMessages";
 import { Link, useParams } from "react-router";
 import { getUserId, isLogedIn } from "../../session/sessionManager";
 import PostButtons from "./PostButtons";
@@ -45,27 +45,14 @@ function Post(props) {
   }
 
   if (!postProp && !data && errors.length > 0) {
-    return (
-      <div className="flash-messages">
-        {errors.map((error, index) => (
-          <FlashMessage message={error} type={"error"} key={index} />
-        ))}
-      </div>
-    );
+    return <FlashMessages data={data} errors={errors} />;
   }
 
   const post = postProp || data.post;
 
   return (
     <div className="post">
-      <div className="flash-messages">
-        {errors.map((error, index) => (
-          <FlashMessage message={error} type={"error"} key={index} />
-        ))}
-        {data !== null && typeof data.message !== "undefined" && (
-          <FlashMessage message={data.message} type={"success"} />
-        )}
-      </div>
+      <FlashMessages data={data} errors={errors} />
       <div className="author">
         <div className="avatar">
           <Link to={`/profile/${post.user_id}`}>

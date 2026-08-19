@@ -2,7 +2,7 @@ import "./SignUp.css";
 import FormRow from "../parts/FormRow";
 import Loading from "../parts/Loading/Loading";
 import Required from "../parts/Required";
-import FlashMessage from "../parts/FlashMessage/FlashMessage";
+import FlashMessages from "../parts/FlashMessage/FlashMessages";
 import { setValidationResult } from "../parts/FormValidation";
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
@@ -288,14 +288,7 @@ function SignUp() {
           </div>
           {loading && <Loading size={4} />}
         </form>
-        <div className="flash-messages">
-          {errors.map((error, index) => (
-            <FlashMessage message={error} type={"error"} key={index} />
-          ))}
-          {data !== null && data.message !== null && (
-            <FlashMessage message={data.message} type={"success"} />
-          )}
-        </div>
+        <FlashMessages data={data} errors={errors} />
       </div>
     </>
   );

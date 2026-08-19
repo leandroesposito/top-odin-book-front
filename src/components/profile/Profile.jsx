@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
-import FlashMessage from "../parts/FlashMessage/FlashMessage";
+import FlashMessages from "../parts/FlashMessage/FlashMessages";
 import { Link, useNavigate, useParams } from "react-router";
 import Posts from "../post/Posts";
 import { getUserId, isLogedIn } from "../../session/sessionManager";
@@ -75,14 +75,7 @@ function Profile() {
           </div>
         </div>
       )}
-      <div className="flash-messages">
-        {errors.map((error, index) => (
-          <FlashMessage message={error} type={"error"} key={index} />
-        ))}
-        {data !== null && typeof data.message !== "undefined" && (
-          <FlashMessage message={data.message} type={"success"} />
-        )}
-      </div>
+      <FlashMessages data={data} errors={errors} />
       <Posts userId={userId} />
     </div>
   );

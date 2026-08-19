@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
-import FlashMessage from "../parts/FlashMessage/FlashMessage";
+import FlashMessages from "../parts/FlashMessage/FlashMessages";
 
 function RelationsButtons({ profile, onButtonClick }) {
   const { loading, success, data, errors, makeRequest } = useFetch();
@@ -93,11 +93,7 @@ function RelationsButtons({ profile, onButtonClick }) {
           Send friend request
         </button>
       )}
-      <div className="flash-messages">
-        {errors.map((error, index) => (
-          <FlashMessage message={error} type={"error"} key={index} />
-        ))}
-      </div>
+      <FlashMessages errors={errors} />
     </>
   );
 }

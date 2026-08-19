@@ -3,7 +3,7 @@ import useFetch from "../../../hooks/useFetch";
 import Loading from "../../parts/Loading/Loading";
 import ChatMessage from "./ChatMessage";
 import "./ChatContainer.css";
-import FlashMessage from "../../parts/FlashMessage/FlashMessage";
+import FlashMessages from "../../parts/FlashMessage/FlashMessages";
 
 export default function ChatContainer({ currentChat }) {
   const { loading, data, errors, makeRequest, reset } = useFetch();
@@ -94,14 +94,7 @@ export default function ChatContainer({ currentChat }) {
         data.messages.map((m) => {
           return <ChatMessage key={m.id} {...m} />;
         })}
-      {data !== null && typeof data.message !== "undefined" && (
-        <FlashMessage type={"success"} message={data.message} />
-      )}
-      {errors &&
-        errors.length > 0 &&
-        errors.map((e, index) => {
-          return <FlashMessage type={"error"} message={e} key={index} />;
-        })}
+      <FlashMessages data={data} errors={errors} />
       <div ref={chatEnding}></div>
     </div>
   );
