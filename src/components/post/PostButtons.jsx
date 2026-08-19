@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 import { Link } from "react-router";
+import { SquarePen, Trash2 } from "lucide-react";
 
 function PostButtons({ post, onDelete }) {
   const { loading, success, errors, makeRequest } = useFetch();
@@ -26,13 +27,20 @@ function PostButtons({ post, onDelete }) {
   return (
     <div className="post-buttons buttons">
       <button
-        className="delete-post-button"
+        className="delete-post-button button delete-button"
         disabled={loading}
         onClick={onDeleteClick}
+        aria-label="Delete post"
       >
-        Delete
+        <Trash2 />
       </button>
-      <Link to={`/post/${post.id}/edit`}>Edit</Link>
+      <Link
+        to={`/post/${post.id}/edit`}
+        className="button"
+        aria-label="Edit post"
+      >
+        <SquarePen />
+      </Link>
     </div>
   );
 }

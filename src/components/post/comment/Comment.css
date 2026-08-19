@@ -1,0 +1,52 @@
+.comments {
+  overflow-x: auto;
+}
+
+.comment {
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: var(--primary-300) 0 0 1rem;
+  margin: 1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.comment-content {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  overflow-x: hidden;
+  max-width: 100%;
+  font-size: 1.1rem;
+}
+
+.delete-button:hover {
+  background-color: var(--red-alert-color);
+}
+
+.comments .form-container {
+  padding: 1rem;
+}
+
+.comments form.form {
+  gap: 0.5rem;
+}
+
+.comments .form-container .form-row-content {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.comments .form-container textarea:focus-visible,
+.comments .form-container input:focus-visible {
+  outline: 2px solid var(--accent-500);
+}
+
+.comments .form-container textarea {
+  padding: 0.5rem 1rem;
+  border-color: var(--primary-800);
+  border-radius: 1rem;
+  background-color: var(--primary-100);
+  color: var(--neutral-800);
+  font-weight: 501;
+  resize: none;
+}

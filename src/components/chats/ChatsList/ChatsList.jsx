@@ -3,6 +3,8 @@ import useFetch from "../../../hooks/useFetch";
 import ChatItem from "./ChatItem";
 import Loading from "../../parts/Loading/Loading";
 import FlashMessages from "../../parts/FlashMessage/FlashMessages";
+import { Link } from "react-router";
+import { ChevronLeft } from "lucide-react";
 
 export default function ChatsList({ onChatClick, currentChat }) {
   const { loading, data, errors, makeRequest } = useFetch();
@@ -60,6 +62,14 @@ export default function ChatsList({ onChatClick, currentChat }) {
 
   return (
     <div className="chats-list">
+      <div className="back-button">
+        <Link to={"/"}>
+          <div className="button round">
+            <ChevronLeft />
+          </div>
+          Back
+        </Link>
+      </div>
       <div className="chats-list-header">
         <h2>Chats</h2>
       </div>

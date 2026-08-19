@@ -1,12 +1,11 @@
 .chat-message {
   position: relative;
-  background-color: var(--surface-9);
-  color: black;
+  background-color: var(--neutral-300);
+  color: var(--neutral-900);
   border-radius: 1rem;
   width: min(100%, 25rem);
   min-width: 10rem;
-  padding: 0.5rem;
-  color: black;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -14,23 +13,13 @@
 
 .chat-message.mine {
   margin-left: auto;
-}
-
-.chat-message .message-user {
-  padding: 0;
-  background-color: unset;
-  color: var(--secondary-100);
-  font-weight: 600;
-}
-
-.chat-message.mine .message-user {
-  color: var(--primary-100);
+  background-color: var(--primary-200);
 }
 
 .chat-message .message-date {
   align-self: end;
   font-size: 0.9rem;
-  color: #bbbbbb;
+  color: var(--neutral-800);
 }
 
 .chat-message .message-content {
@@ -50,4 +39,34 @@
   transform: scale(0);
   top: 0.5rem;
   right: 0.5rem;
+}
+
+.delete-message-button:hover {
+  background-color: var(--red-alert-color);
+}
+
+div.message-pictures {
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 500px;
+  border: 5px solid var(--primary-200);
+  border-radius: 1rem;
+  background-color: var(--primary-200);
+  gap: 5px;
+}
+
+.message-picture {
+  flex: 1 1 125px;
+  max-height: 200px;
+}
+.message-picture:only-child {
+  max-height: 490px;
+}
+
+.message-picture img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
 }

@@ -1,6 +1,8 @@
+import "./Friend.css";
 import { Link, useNavigate } from "react-router";
 import useFetch from "../../hooks/useFetch";
 import { isLogedIn } from "../../session/sessionManager";
+import Avatar from "../parts/Avatar";
 
 export default function Friend({ user, isFriendProp }) {
   const { loading, success, makeRequest } = useFetch();
@@ -35,51 +37,62 @@ export default function Friend({ user, isFriendProp }) {
 
   return (
     <div className="user-item">
-      <div className="avatar">
-        <Link to={`/profile/${user.id}`}>
-          <img src={user.profile_picture_url} alt={`${user.name}'s avatar`} />
-        </Link>
-      </div>
-
-      <div className="name">
-        <Link to={`/profile/${user.id}`}>{user.name}</Link>
-      </div>
-      {isLogedIn() && (
-        <div className="buttons">
-          {user.requestReceived ? (
-            <>
-              <button disabled={loading || success} onClick={onAcceptClick}>
-                {success ? "Accepted" : "Accept"}
-              </button>
-              <button disabled={loading || success} onClick={onRejectClick}>
-                {success ? "Rejected" : "Reject"}
-              </button>
-            </>
-          ) : user.requestSent ? (
-            <button disabled={loading || success} onClick={onCancelClick}>
-              {success ? "Canceled" : "Cancel Request"}
-            </button>
-          ) : isFriend ? (
-            <button
-              onClick={() => {
-                onMessageClick(user);
-              }}
-            >
-              Message
-            </button>
-          ) : (
-            (user.isMyself === false ||
-              typeof user.isMyself === "undefined") && (
-              <button
-                disabled={loading || success}
-                onClick={onSendRequestClick}
-              >
-                {success ? "Request sended" : "Send friend request"}
-              </button>
-            )
-          )}
+      <Avatar data={user} size={6} />
+      <div className="user-info">
+        <div className="name">
+          <Link to={`/profile/${user.id}`}>{user.name}</Link>
         </div>
-      )}
+        {isLogedIn() && (
+          <div className="buttons">
+            {user.requestReceived ? (
+              <>
+                <button
+                  className="button"
+                  disabled={loading || success}
+                  onClick={onAcceptClick}
+                >
+                  {success ? "Accepted" : "Accept"}
+                </button>
+                <button
+                  className="button"
+                  disabled={loading || success}
+                  onClick={onRejectClick}
+                >
+                  {success ? "Rejected" : "Reject"}
+                </button>
+              </>
+            ) : user.requestSent ? (
+              <button
+                className="button"
+                disabled={loading || success}
+                onClick={onCancelClick}
+              >
+                {success ? "Canceled" : "Cancel Request"}
+              </button>
+            ) : isFriend ? (
+              <button
+                className="button"
+                onClick={() => {
+                  onMessageClick(user);
+                }}
+              >
+                Message
+              </button>
+            ) : (
+              (user.isMyself === false ||
+                typeof user.isMyself === "undefined") && (
+                <button
+                  className="button"
+                  disabled={loading || success}
+                  onClick={onSendRequestClick}
+                >
+                  {success ? "Request sended" : "Send friend request"}
+                </button>
+              )
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

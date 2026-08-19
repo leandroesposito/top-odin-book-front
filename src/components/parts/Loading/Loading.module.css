@@ -1,11 +1,13 @@
 .loading {
   width: 1em;
   height: 1em;
-  border: 0.2em dotted white;
+  border: 0.2em dotted var(--primary-500);
   border-radius: 50%;
   animation: spin 3s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+  justify-self: center;
+  align-self: center;
 }
 
 @keyframes spin {

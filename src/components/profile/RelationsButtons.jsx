@@ -53,42 +53,47 @@ function RelationsButtons({ profile, onButtonClick }) {
     <>
       {isFriend !== null && isFriend ? (
         <button
+          aria-label=""
           disabled={loading}
           onClick={deleteFriend}
-          className="delete-friend"
+          className="delete-friend button"
         >
-          Delete friend
+          Remove friend
         </button>
       ) : requestReceived ? (
         <>
           <button
+            aria-label=""
             disabled={loading}
             onClick={acceptFriendRequest}
-            className="accept-request"
+            className="accept-request button"
           >
             Accept request
           </button>
           <button
+            aria-label=""
             disabled={loading}
             onClick={rejectFriendRequest}
-            className="reject-request"
+            className="reject-request button"
           >
             Reject request
           </button>
         </>
       ) : requestSent ? (
         <button
+          aria-label=""
           disabled={loading}
           onClick={cancelFriendRequest}
-          className="cancel-request"
+          className="cancel-request button"
         >
           Cancel request
         </button>
       ) : (
         <button
+          aria-label=""
           disabled={loading}
           onClick={sendFriendRequest}
-          className="send-friend-request"
+          className="send-friend-request button"
         >
           Send friend request
         </button>

@@ -1,3 +1,4 @@
+import "./Post.css";
 import { useCallback, useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import Loading from "../parts/Loading/Loading";
@@ -8,6 +9,7 @@ import PostButtons from "./PostButtons";
 import LikeButton from "./LikeButton";
 import CommentsButton from "./CommentsButton";
 import Comments from "./comment/Comments";
+import Avatar from "../parts/Avatar";
 
 function Post(props) {
   const { loading, data, errors, makeRequest } = useFetch();
@@ -54,14 +56,7 @@ function Post(props) {
     <div className="post">
       <FlashMessages data={data} errors={errors} />
       <div className="author">
-        <div className="avatar">
-          <Link to={`/profile/${post.user_id}`}>
-            <img
-              src={post.profile_picture_url}
-              alt={`${post.author}'s avatar`}
-            />
-          </Link>
-        </div>
+        <Avatar data={post} size={3} />
         <div className="author-name">
           <Link to={`/profile/${post.user_id}`}>{post.author}</Link>
         </div>
@@ -74,7 +69,7 @@ function Post(props) {
           {new Date(post.created_at).toLocaleString()}
         </Link>
       </div>
-      <div className="post-content">{post.body}</div>
+      <pre className="post-content">{post.body}</pre>
       {typeof post?.pictures !== "undefined" && post.pictures.length > 0 && (
         <div className="post-pictures">
           {post.pictures.map((picture) => {
@@ -86,7 +81,7 @@ function Post(props) {
           })}
         </div>
       )}
-      <div className="post-bottom-buttons">
+      <div className="post-bottom-buttons buttons">
         <LikeButton post={post} />
         <CommentsButton
           commentsCount={post.comments_count}

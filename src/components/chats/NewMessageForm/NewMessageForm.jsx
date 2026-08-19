@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import useFetch from "../../../hooks/useFetch";
 import FlashMessages from "../../parts/FlashMessage/FlashMessages";
 import "./NewMessageForm.css";
+import { CircleX, Images, SendHorizonal } from "lucide-react";
 
 export default function NewMessageForm({ currentChat }) {
   const [body, setBody] = useState("");
@@ -35,7 +36,7 @@ export default function NewMessageForm({ currentChat }) {
   }
 
   function getPicturesInput() {
-    return document.querySelector("input#pictures");
+    return document.querySelector("input#pictures.message-pictures");
   }
 
   function validatePictures() {
@@ -106,7 +107,7 @@ export default function NewMessageForm({ currentChat }) {
       <FlashMessages errors={errors} />
       <form
         onSubmit={onSubmit}
-        className="mew-message-form"
+        className="new-message-form"
         encType="multipart/form-data"
       >
         <textarea
@@ -126,10 +127,8 @@ export default function NewMessageForm({ currentChat }) {
         <pre className="sizer">{body}</pre>
         <div className="buttons">
           <div className="image-selector">
-            {imagesCount > 0 && (
-              <div className="files-count">{imagesCount}</div>
-            )}
             <input
+              className="message-pictures"
               type="file"
               name="pictures"
               id="pictures"
@@ -137,20 +136,34 @@ export default function NewMessageForm({ currentChat }) {
               accept="image/*"
               multiple
             />
-            {imagesCount > 0 && (
-              <button type="button" onClick={clearFileInput}>
-                X
-              </button>
-            )}
+            <label
+              htmlFor="pictures"
+              className="file-input-label-button"
+              aria-label="Select Pictures"
+            >
+              <Images />
+              {imagesCount > 0 && (
+                <div className="files-count">{imagesCount}</div>
+              )}
+              {imagesCount > 0 && (
+                <button
+                  type="button"
+                  onClick={clearFileInput}
+                  aria-label="Remove selected pictures"
+                >
+                  <CircleX />
+                </button>
+              )}
+            </label>
           </div>
           <button
             type="submit"
-            className="round"
+            className="round button"
             onClick={onSubmitClick}
             disabled={loading}
             aria-label="Send"
           >
-            Send
+            <SendHorizonal />
           </button>
         </div>
       </form>

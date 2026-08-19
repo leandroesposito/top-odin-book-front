@@ -1,11 +1,9 @@
-//Suggested for you
-
 import { useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 import Loading from "../parts/Loading/Loading";
 import FlashMessages from "../parts/FlashMessage/FlashMessages";
 import Friend from "./Friend";
-import { Link, Navigate } from "react-router";
+import { Navigate } from "react-router";
 import { isLogedIn } from "../../session/sessionManager";
 
 export default function Suggested() {
@@ -21,7 +19,6 @@ export default function Suggested() {
 
   return (
     <>
-      <Link to={"/search"}>Or search</Link>
       {!loading && !data && errors.length == 0 ? null : loading ? (
         <Loading />
       ) : !data && errors.length > 0 ? (

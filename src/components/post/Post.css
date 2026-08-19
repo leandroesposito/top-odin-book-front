@@ -1,0 +1,86 @@
+.posts {
+  display: grid;
+  gap: 2rem;
+}
+
+.post {
+  color: var(--neutral-800);
+  display: grid;
+  gap: 0.5rem;
+  box-shadow: var(--primary-300) 0 0 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  overflow-x: auto;
+}
+
+.post .author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 501;
+  overflow-x: auto;
+}
+
+.post .author-name {
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+}
+
+.post a {
+  text-decoration: none;
+}
+
+.post a:not(.button),
+.post a:visited:not(.button) {
+  color: var(--neutral-800);
+}
+
+.post-content {
+  font-size: 1.1rem;
+  font-weight: 501;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+.post-pictures {
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 500px;
+  border: 5px solid var(--primary-200);
+  border-radius: 1rem;
+  background-color: var(--primary-200);
+  gap: 5px;
+}
+
+.post-picture {
+  flex: 1 1 250px;
+  max-height: 240px;
+}
+.post-picture:only-child {
+  max-height: 490px;
+}
+
+.post-picture img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.like-post-button:hover {
+  background-color: var(--green-alert-color);
+}
+
+.dislike-post-button:hover {
+  background-color: var(--red-alert-color);
+}
+
+@media screen and (max-width: 768px) {
+  .post-bottom-buttons.buttons {
+    justify-content: space-evenly;
+  }
+}

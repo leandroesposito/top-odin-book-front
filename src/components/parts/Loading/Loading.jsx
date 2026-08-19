@@ -1,6 +1,6 @@
 import styles from "./Loading.module.css";
 
-export default function Loading({ size }) {
+export default function Loading({ size = 4 }) {
   return (
     <div
       className="loading-container"

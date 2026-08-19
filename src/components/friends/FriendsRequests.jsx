@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 import Loading from "../parts/Loading/Loading";
 import FlashMessages from "../parts/FlashMessage/FlashMessages";
+import { Navigate } from "react-router";
 import { isLogedIn } from "../../session/sessionManager";
 import Friend from "./Friend";
 
@@ -18,7 +19,6 @@ export default function FriendsRequests() {
 
   return (
     <>
-      <Link to={"/friends"}>Friends</Link>
       {!loading && !data && errors.length == 0 ? null : loading ? (
         <Loading />
       ) : !data && errors.length > 0 ? (

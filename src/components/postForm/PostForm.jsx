@@ -1,3 +1,4 @@
+import "./PostForm.css";
 import "../parts/form.css";
 import FormRow from "../parts/FormRow";
 import Loading from "../parts/Loading/Loading";
@@ -7,12 +8,13 @@ import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { Navigate, useNavigate, useParams } from "react-router";
 import { isLogedIn } from "../../session/sessionManager";
-import Required from "../parts/Required";
+import { CircleX, Images } from "lucide-react";
 
 function PostForm() {
   const { loading, data, success, errors, makeRequest } = useFetch();
   const [body, setBody] = useState("");
   const [pictures, setPictures] = useState(null);
+  const [picturesToUpload, setPicturesToUpload] = useState([]);
   const navigate = useNavigate();
   const { postId } = useParams();
 
@@ -83,12 +85,14 @@ function PostForm() {
     }
 
     setValidationResult(input, "");
+    setPicturesToUpload(files);
     return true;
   }
 
   function clearFileInput() {
     const input = getPicturesInput();
     input.value = "";
+    setPicturesToUpload([]);
   }
 
   function onSubmitClick() {
@@ -126,15 +130,15 @@ function PostForm() {
 
   return (
     <>
-      <div className="form-container">
+      <div className="form-container post-form-container">
         <form
           onSubmit={onSubmit}
           className="form"
           encType="multipart/form-data"
         >
-          <h2>Post</h2>
-          <FormRow>
-            <label htmlFor="name">What are you thinking?</label> <Required />
+          <h2>{typeof postId === "undefined" && "New "} Post</h2>
+          <div className="form-row-content body-row">
+            <label htmlFor="body">What are you thinking?</label>
             <textarea
               className="post-body"
               type="text"
@@ -146,7 +150,7 @@ function PostForm() {
               defaultValue={body}
               rows={4}
             />
-          </FormRow>
+          </div>
           {pictures !== null &&
             typeof pictures !== "undefined" &&
             pictures.length > 0 && (
@@ -169,6 +173,9 @@ function PostForm() {
             )}
           <FormRow>
             <label htmlFor="pictures">Pictures</label>
+            <label htmlFor="pictures" className="file-input-label-button">
+              <Images /> Select Pictures
+            </label>
             <input
               className="post-pictures"
               type="file"
@@ -178,12 +185,34 @@ function PostForm() {
               accept="image/*"
               multiple
             />
-            <button type="button" onClick={clearFileInput}>
-              Clear
-            </button>
+            {picturesToUpload.length > 0 && (
+              <>
+                <div className="pictures-to-upload">
+                  {[...picturesToUpload].map((p) => {
+                    return (
+                      <div className="picture-item" key={p.name}>
+                        {p.name}
+                      </div>
+                    );
+                  })}
+                </div>
+                <button
+                  className="button clear-files-button"
+                  type="button"
+                  onClick={clearFileInput}
+                >
+                  <CircleX /> Clear Files
+                </button>
+              </>
+            )}
           </FormRow>
           <div className="buttons">
-            <button type="submit" onClick={onSubmitClick} disabled={loading}>
+            <button
+              type="submit"
+              className="button"
+              onClick={onSubmitClick}
+              disabled={loading}
+            >
               Submit
             </button>
           </div>

@@ -1,8 +1,11 @@
+import Avatar from "../../parts/Avatar";
+
 export default function ChatItem({
   id,
   name,
   lastMessageTime,
   unreadCount,
+  profile_picture_url,
   onChatClick,
   isOpen = false,
 }) {
@@ -18,16 +21,21 @@ export default function ChatItem({
       onClick={onChatClick}
     >
       <div className="left">
-        <div className="name">{name}</div>
+        <Avatar
+          data={{ id, name, profile_picture_url }}
+          size={2}
+          addAnchor={false}
+        />
+        <div className="chat-item-info">
+          <div className="name">{name}</div>
+          {lastMessageTime !== null && (
+            <div className="last-message-time">{lastMessageTimeString}</div>
+          )}
+        </div>
       </div>
       <div className="right">
-        {parseInt(unreadCount) > 0 ? (
+        {parseInt(unreadCount) > 0 && (
           <div className="unread-count">{unreadCount}</div>
-        ) : (
-          <div></div>
-        )}
-        {lastMessageTime !== null && (
-          <div className="last-message-time">{lastMessageTimeString}</div>
         )}
       </div>
     </button>

@@ -1,9 +1,22 @@
 .chat-header {
-  border-radius: 0;
-  background-color: var(--surface-4);
-  color: white;
+  background-color: var(--primary-200);
+  border-radius: 1rem;
+  text-align: center;
 }
 
-.chat-header:hover {
-  background-color: var(--surface-9);
+.chat-header a {
+  color: var(--neutral-800);
+  text-decoration: none;
+  font-weight: 501;
+}
+
+.chat-header:has(a:hover) {
+  background-color: var(--primary-300);
+}
+
+.chat-header .name {
+  padding: 1rem;
+  text-wrap: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 }

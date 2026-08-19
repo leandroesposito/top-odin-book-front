@@ -2,29 +2,39 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .form-row-content {
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 13rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: stretch;
   align-items: center;
   gap: 1rem;
 }
 
+.auth-form-container label {
+  flex: 0 0 13rem;
+}
+
+.auth-form-container input {
+  flex: 1 1 13rem;
+}
+
 .form-row .validation-result {
-  background-color: var(--error-background-color);
+  background-color: var(--red-alert-color);
   width: 100%;
   text-align: center;
   color: black;
-  font-weight: 500;
+  font-weight: 501;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   transition: transform 0.5s;
   transform-origin: top;
   height: 1.5rem;
-  padding: 0 1rem;
-  min-width: 23rem;
+  /* padding: 0 1rem; */
+  /* min-width: 23rem; */
 }
 
 .form-row .validation-result:empty {
@@ -32,9 +42,9 @@
 }
 
 .form-row:not(:has(.validation-result:empty)) input {
-  border-color: var(--error-background-color);
+  border-color: var(--red-alert-color);
 }
 
 .form-row:not(:has(.validation-result:empty)) input:focus-visible {
-  outline: 2px solid var(--error-background-color);
+  outline: 2px solid var(--red-alert-color);
 }

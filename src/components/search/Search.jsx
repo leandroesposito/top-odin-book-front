@@ -27,11 +27,13 @@ export default function Search() {
 
   return (
     <>
-      <h2 id="search-title">Search</h2>
+      <label htmlFor="search">
+        <h2 id="search-title">Search</h2>
+      </label>
       <input
         type="text"
         placeholder="search"
-        aria-labelledby="search-title"
+        id="search"
         onChange={onInputChange}
         value={inputVal}
       />

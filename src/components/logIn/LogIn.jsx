@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { Navigate, useNavigate } from "react-router";
 import { isLogedIn, logIn } from "../../session/sessionManager";
+import { Eye, EyeOff } from "lucide-react";
 
 function LogIn() {
   const [username, setUsername] = useState("");
@@ -113,7 +114,7 @@ function LogIn() {
 
   return (
     <>
-      <div className="form-container">
+      <div className="form-container auth-form-container">
         <form onSubmit={onSubmit} className="auth-form form">
           <h2>Log In</h2>
           <FormRow>
@@ -148,11 +149,20 @@ function LogIn() {
               type="button"
               onClick={onPasswordVisibilityClick}
             >
-              {viewPassword ? "hide" : "view"}
+              {viewPassword ? (
+                <EyeOff aria-label="Hide password" />
+              ) : (
+                <Eye aria-label="View password" />
+              )}
             </button>
           </FormRow>
           <div className="buttons">
-            <button type="submit" onClick={onSubmitClick} disabled={loading}>
+            <button
+              className="button"
+              type="submit"
+              onClick={onSubmitClick}
+              disabled={loading}
+            >
               Submit
             </button>
             or

@@ -2,6 +2,7 @@ import useFetch from "../../../hooks/useFetch";
 import { getUserId } from "../../../session/sessionManager";
 import "./ChatMessage.css";
 import FlashMessages from "../../parts/FlashMessage/FlashMessages";
+import { Trash2 } from "lucide-react";
 
 export default function ChatMessage({ id, userId, body, createdAt, pictures }) {
   const { loading, success, errors, makeRequest } = useFetch();
@@ -19,21 +20,28 @@ export default function ChatMessage({ id, userId, body, createdAt, pictures }) {
 
   return (
     <div className={`chat-message ${isMine ? "mine" : ""}`}>
-      {Array.isArray(pictures) &&
-        pictures.map((p) => {
-          return <img src={p.url} key={p.id} />;
-        })}
+      {Array.isArray(pictures) && (
+        <div className="message-pictures">
+          {pictures.map((p) => {
+            return (
+              <div className="message-picture">
+                <img src={p.url} key={p.id} />
+              </div>
+            );
+          })}
+        </div>
+      )}
       <pre className="message-content">{body}</pre>
       <FlashMessages errors={errors} />
       <div className="message-date">{new Date(createdAt).toLocaleString()}</div>
       {isMine && (
         <button
-          className="delete-message-button danger round"
+          className="delete-message-button danger round button"
           aria-label="Delete message"
           onClick={onDelete}
           disabled={loading}
         >
-          Delete
+          <Trash2 />
         </button>
       )}
     </div>

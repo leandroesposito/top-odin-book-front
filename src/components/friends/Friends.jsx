@@ -20,9 +20,6 @@ export default function Friends() {
 
   return (
     <>
-      {isLogedIn() && !userId && (
-        <Link to={"/friends-requests"}>Friends requests</Link>
-      )}
       {!loading && !data && errors.length == 0 ? null : loading ? (
         <Loading />
       ) : !data && errors.length > 0 ? (
@@ -37,7 +34,7 @@ export default function Friends() {
               : ""}
             Friends
           </h2>
-          <div className="friends">
+          <div className="friends users-list">
             {Array.isArray(data?.friends) ? (
               data.friends.length > 0 ? (
                 data.friends.map((user) => {
@@ -47,7 +44,12 @@ export default function Friends() {
                 <>
                   <div>
                     Your friends list is empty, frind friends{" "}
-                    <Link to={"/find"}>Here</Link>
+                    <Link
+                      to={"/suggested"}
+                      style={{ color: "var(--neutral-800)", fontWeight: 501 }}
+                    >
+                      Here
+                    </Link>
                   </div>
                 </>
               )

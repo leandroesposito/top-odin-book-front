@@ -3,14 +3,14 @@
   background-color: var(--surface-1);
 }
 
-.mew-message-form {
+.new-message-form {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 1rem;
 }
 
-.mew-message-form textarea,
-.mew-message-form .sizer {
+.new-message-form textarea,
+.new-message-form .sizer {
   grid-area: 1/ 1/ 2 /2;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
@@ -24,7 +24,7 @@
 }
 
 /* used to create the effect of auto grow of the textarea */
-.mew-message-form .sizer {
+.new-message-form .sizer {
   visibility: hidden;
   height: auto;
   word-wrap: break-word;
@@ -32,7 +32,38 @@
   color: green;
 }
 
-.mew-message-form button {
+.new-message-form button {
   grid-area: 1 /2;
   align-self: end;
+}
+
+.new-message-form textarea {
+  background-color: var(--primary-200);
+}
+
+.new-message-form .image-selector {
+  position: relative;
+}
+
+.new-message-form .image-selector:has(input:focus-visible) label {
+  outline: 2px solid black;
+}
+
+.new-message-form input[type="file"] {
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.new-message-form label.file-input-label-button {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.new-message-form .image-selector button {
+  background-color: unset;
+  border: none;
+  padding: 0;
+  display: flex;
 }

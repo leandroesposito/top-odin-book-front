@@ -1,3 +1,53 @@
+.form-container {
+  font-size: 17px;
+}
+
+.form-container input,
+.form-container button,
+input#search,
+textarea {
+  font-size: 17px;
+}
+
+.form-container form {
+  display: grid;
+  gap: 2rem;
+}
+
+.form-container form label {
+  font-weight: bold;
+}
+
+.form-container form input,
+.form-container form textarea,
+input#search {
+  color: var(--neutral-800);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--primary-800);
+  background-color: var(--primary-100);
+}
+
+.form-container input#password {
+  padding-right: 3.5rem;
+}
+
+.form-container .view-password {
+  position: absolute;
+  right: 0rem;
+  bottom: 1.6rem;
+  background-color: unset;
+  border: none;
+}
+
+.form-container .buttons {
+  justify-content: center;
+}
+
+.form-container label {
+  color: var(--neutral-900);
+}
+
 .valid {
   color: green;
 }

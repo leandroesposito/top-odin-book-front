@@ -1,3 +1,4 @@
+import "./ChatsScreen.css";
 import { useState } from "react";
 import ChatsList from "./ChatsList/ChatsList";
 import MainPanel from "./MainPanel/MainPanel";
@@ -25,10 +26,10 @@ export default function ChatsScreen() {
 
   return (
     <>
-      <main>
+      <div className="chat-section">
         <ChatsList onChatClick={onChatClick} currentChat={currentChat} />
         <MainPanel currentChat={currentChat} />
-      </main>
+      </div>
     </>
   );
 }

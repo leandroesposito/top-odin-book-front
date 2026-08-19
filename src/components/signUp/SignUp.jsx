@@ -7,6 +7,7 @@ import { setValidationResult } from "../parts/FormValidation";
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { useNavigate } from "react-router";
+import { Eye, EyeOff } from "lucide-react";
 import { logIn } from "../../session/sessionManager";
 
 function SignUp() {
@@ -214,7 +215,7 @@ function SignUp() {
 
   return (
     <>
-      <div className="form-container">
+      <div className="form-container auth-form-container">
         <form onSubmit={onSubmit} className="auth-form form">
           <h2>Sign Up</h2>
           <FormRow>
@@ -254,11 +255,15 @@ function SignUp() {
               type="button"
               onClick={onPasswordVisibilityClick}
             >
-              {viewPassword ? "hide" : "view"}
+              {viewPassword ? (
+                <EyeOff aria-label="Hide password" />
+              ) : (
+                <Eye aria-label="View password" />
+              )}
             </button>
           </FormRow>
           <div className="password-requirements">
-            <div>Password must contain at least:</div>
+            <div className="requirements">Password must contain at least:</div>
             <div className="password-requirement requirement-length">
               8 (eight) characters.
             </div>
@@ -290,7 +295,12 @@ function SignUp() {
             />
           </FormRow>
           <div className="buttons">
-            <button type="submit" onClick={onSubmitClick} disabled={loading}>
+            <button
+              className="button"
+              type="submit"
+              onClick={onSubmitClick}
+              disabled={loading}
+            >
               Submit
             </button>
             or

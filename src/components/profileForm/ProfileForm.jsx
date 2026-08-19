@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { Navigate } from "react-router";
 import { getUserId, isLogedIn } from "../../session/sessionManager";
+import { CircleX, Image } from "lucide-react";
+import Avatar from "../parts/Avatar";
 
 function ProfileForm() {
   const { loading, data, success, errors, makeRequest } = useFetch();
@@ -14,7 +16,7 @@ function ProfileForm() {
   const [bio, setBio] = useState("");
   const [profession, setProfession] = useState("");
   const [birthdate, setBirthdate] = useState("");
-  const [profilePictureUrl, setProfilePictureUrl] = useState("");
+  const [pictureToUpload, setPictureToUpload] = useState(null);
 
   useEffect(() => {
     let redirectTimeout = null;
@@ -42,7 +44,6 @@ function ProfileForm() {
         setBio(data.profile.bio);
         setProfession(data.profile.profession);
         setBirthdate(data.profile.birthdate);
-        setProfilePictureUrl(data.profile.profilePictureUrl);
       });
     }
   }, [data]);
@@ -87,6 +88,7 @@ function ProfileForm() {
 
     if (files.length == 0) {
       setValidationResult(input, "");
+      setPictureToUpload(null);
       return true;
     } else if (files.length > 1) {
       setValidationResult(input, "You can't select more than 1 (ONE) file.");
@@ -94,14 +96,17 @@ function ProfileForm() {
       setValidationResult(input, "File can't be larger than 512 KB.");
     } else {
       setValidationResult(input, "");
+      setPictureToUpload(input.files[0].name);
       return true;
     }
+    setPictureToUpload(null);
     return false;
   }
 
   function clearFileInput() {
     const input = getProfilePictureInput();
     input.value = "";
+    setPictureToUpload(null);
   }
 
   function onSubmitClick() {
@@ -139,7 +144,7 @@ function ProfileForm() {
 
   return (
     <>
-      <div className="form-container">
+      <div className="form-container profile-form-container">
         <form
           onSubmit={onSubmit}
           className="form"
@@ -159,18 +164,43 @@ function ProfileForm() {
             />
           </FormRow>
           <FormRow>
-            <label htmlFor="profile-picture">Profile picture</label>
-            {profilePictureUrl !== "" && <img src={profilePictureUrl} />}
-            <input
-              type="file"
-              name="profile-picture"
-              id="profile-picture"
-              onChange={validateProfilePicture}
-              accept="image/*"
-            />
-            <button type="button" onClick={clearFileInput}>
-              Clear
-            </button>
+            <div className="profile-picture-row">
+              <div className="profile-picture-row-top">
+                <label htmlFor="profile-picture">Profile picture</label>
+                {typeof data?.profile !== "undefined" && (
+                  <Avatar data={data.profile} size={9} addAnchor={false} />
+                )}
+                <label
+                  htmlFor="profile-picture"
+                  className="file-input-label-button"
+                >
+                  <Image /> Select Picture
+                </label>
+              </div>
+              <input
+                type="file"
+                name="profile-picture"
+                id="profile-picture"
+                onChange={validateProfilePicture}
+                accept="image/*"
+              />
+              <div className="profile-picture-selected-file-row">
+                {pictureToUpload !== null && (
+                  <>
+                    <div className="picture-to-upload">{pictureToUpload}</div>
+                    <div className="buttons">
+                      <button
+                        type="button"
+                        className="button"
+                        onClick={clearFileInput}
+                      >
+                        <CircleX /> Clear
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
           </FormRow>
           <FormRow>
             <label htmlFor="profession">Profession</label>
@@ -206,7 +236,12 @@ function ProfileForm() {
             />
           </FormRow>
           <div className="buttons">
-            <button type="submit" onClick={onSubmitClick} disabled={loading}>
+            <button
+              type="submit"
+              className="button"
+              onClick={onSubmitClick}
+              disabled={loading}
+            >
               Submit
             </button>
           </div>

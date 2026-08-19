@@ -1,0 +1,75 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.profile .profile-header a {
+  text-decoration: none;
+}
+
+.profile-header {
+  display: flex;
+  gap: 2rem;
+}
+
+.profile-description {
+  padding: 1rem 0;
+  display: grid;
+  gap: 1rem;
+  /* justify-items: start; */
+}
+
+.profile-description .name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 501;
+  font-size: 2rem;
+  color: var(--neutral-900);
+  overflow-x: hidden;
+}
+
+.profile-description .name .buttons {
+  font-size: 1rem;
+}
+
+.profile-description .name span {
+  text-wrap: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-description .profession {
+  font-weight: 501;
+  color: var(--neutral-800);
+}
+
+.profile-description .button.friends-count {
+  justify-self: start;
+}
+
+@media screen and (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+  }
+
+  .profile-header .avatar-container {
+    align-self: center;
+  }
+
+  .profile-description {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .profile-description .name {
+    justify-content: center;
+  }
+
+  .profile-description .button.friends-count {
+    justify-self: center;
+  }
+}

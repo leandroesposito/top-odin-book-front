@@ -2,6 +2,19 @@
   color: green;
 }
 
+.valid::after {
+  content: "✅";
+}
+
 .invalid {
   color: red;
+}
+
+.invalid::after {
+  content: "❌";
+}
+
+.requirements {
+  font-size: 1.1rem;
+  font-weight: 501;
 }

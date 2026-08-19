@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { isLogedIn } from "../../session/sessionManager";
+import { Heart, HeartOff } from "lucide-react";
 
 function LikeButton({ post }) {
   const { loading, data, errors, makeRequest } = useFetch();
@@ -34,11 +35,11 @@ function LikeButton({ post }) {
 
   return (
     <button
-      className={`${liked ? "dislike" : "like"}-post-button`}
+      className={`${liked ? "dislike" : "like"}-post-button button`}
       disabled={loading}
       onClick={onLikeClick}
     >
-      {liked ? "Dislike" : "Like"} (
+      {liked ? <HeartOff /> : <Heart />} (
       {post.likes_count + (liked !== post.liked ? (liked ? 1 : -1) : 0)})
     </button>
   );

@@ -1,3 +1,4 @@
+import "./Profile.css";
 import { useCallback, useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 import FlashMessages from "../parts/FlashMessage/FlashMessages";
@@ -5,6 +6,8 @@ import { Link, useNavigate, useParams } from "react-router";
 import Posts from "../post/Posts";
 import { getUserId, isLogedIn } from "../../session/sessionManager";
 import RelationsButtons from "./RelationsButtons";
+import Avatar from "../parts/Avatar";
+import { Mail } from "lucide-react";
 
 function Profile() {
   const { data, errors, makeRequest } = useFetch();
@@ -32,17 +35,10 @@ function Profile() {
     <div className="profile">
       {typeof data?.profile !== "undefined" && (
         <div className="profile-header">
-          <div className="avatar-container">
-            <div className="avatar">
-              <img
-                src={data.profile.profilePictureUrl}
-                alt={`${data.profile.name}'s avatar`}
-              />
-            </div>
-          </div>
+          <Avatar data={data.profile} size={8} />
           <div className="profile-description">
             <div className="name">
-              {data.profile.name}
+              <span>{data.profile.name}</span>
               {isLogedIn() && (
                 <div className="buttons">
                   {data.profile.userId === getUserId() ? (
@@ -53,11 +49,13 @@ function Profile() {
                     <>
                       {data.profile.isFriend && (
                         <button
+                          className="button"
                           onClick={() => {
                             onMessageClick(data.profile);
                           }}
+                          aria-label="Message"
                         >
-                          Message
+                          <Mail />
                         </button>
                       )}
                       <RelationsButtons
@@ -69,9 +67,16 @@ function Profile() {
                 </div>
               )}
             </div>
-            <div className="profession">{data.profile.profession}</div>
-            <div className="bio">{data.profile.bio}</div>
-            <div className="friends">Friends: {data.profile.friendsCount}</div>
+            {data.profile.profession && (
+              <div className="profession">{data.profile.profession}</div>
+            )}
+            {data.profile.bio && <div className="bio">{data.profile.bio}</div>}
+            <Link
+              className="button friends-count"
+              to={`/friends/${data.profile.userId}`}
+            >
+              Friends: {data.profile.friendsCount}
+            </Link>
           </div>
         </div>
       )}

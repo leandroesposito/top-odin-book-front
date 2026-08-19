@@ -1,3 +1,5 @@
+import { MessageCircleMore } from "lucide-react";
+
 function CommentsButton({
   commentsCount,
   onCommentsButtonClick,
@@ -8,8 +10,12 @@ function CommentsButton({
   }
 
   return (
-    <button className={`comments-post-button`} onClick={onClick}>
-      Comments ({commentsCount - deletedComments})
+    <button
+      className={`comments-post-button button`}
+      onClick={onClick}
+      aria-label="Comments"
+    >
+      <MessageCircleMore /> ({commentsCount - deletedComments})
     </button>
   );
 }

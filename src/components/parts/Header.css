@@ -3,8 +3,29 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 1rem;
+  background: linear-gradient(to right, var(--primary-600), var(--primary-500));
+}
+
+.header a,
+.header a:visited {
+  text-decoration: none;
+}
+
+.header .logo h1 {
+  font-size: 2rem;
+  color: white;
+}
+
+.header a.button,
+.header a.button:visited {
+  color: var(--primary-800);
 }
 
 .logo h1 {
   font-size: 1.5rem;
+}
+
+.drop-down-items {
+  display: flex;
+  gap: 1rem;
 }

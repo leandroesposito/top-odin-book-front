@@ -8,7 +8,6 @@ function App() {
   const location = useLocation();
 
   if (location.pathname === "/") {
-    console.log(location);
     if (isLogedIn()) {
       return <Navigate to={"/feed"} />;
     } else {

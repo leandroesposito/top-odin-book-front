@@ -1,6 +1,13 @@
 import { Link } from "react-router";
-import { getName, getUserId, isLogedIn } from "../../session/sessionManager";
+import {
+  getName,
+  getUser,
+  getUserId,
+  isLogedIn,
+  logIn,
+} from "../../session/sessionManager";
 import "./Header.css";
+import Avatar from "./Avatar";
 import useFetch from "../../hooks/useFetch";
 import { useEffect } from "react";
 import Loading from "./Loading/Loading";
@@ -41,17 +48,13 @@ function Header() {
         <div className="buttons">
           {isLogedIn() ? (
             <>
-              <div className="drop-down">
-                <Link to={`/profile/${getUserId()}`}>{getName()}</Link>
-                <div className="drop-down-items">
-                  <Link to={`/friends`}>Friends</Link>
-                  <Link to={"/friends-requests"}>Friends Requests</Link>
-                  <Link to={"/suggested"}>Suggested</Link>
-                  <Link to={"/search"}>Search</Link>
-                  <Link to={"/messages"}>Messages</Link>
-                  <Link to={"/log-out"}>Log out</Link>
-                </div>
-              </div>
+              <Link to={`/profile/${getUserId()}`} className="button">
+                <Avatar data={getUser()} addAnchor={false} />
+                {getName()}
+              </Link>
+              <Link to={"/log-out"} className="button">
+                Log out
+              </Link>
             </>
           ) : (
             <>

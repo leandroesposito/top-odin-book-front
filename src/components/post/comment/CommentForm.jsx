@@ -10,7 +10,7 @@ function CommentForm({ postId, onNewComment }) {
   const { loading, data, success, errors, makeRequest } = useFetch();
 
   function clearBody() {
-    document.querySelector("textarea#body").value = "";
+    document.querySelector("textarea#body.comment-body").value = "";
   }
 
   useEffect(() => {
@@ -23,13 +23,13 @@ function CommentForm({ postId, onNewComment }) {
   }, [data, success, onNewComment]);
 
   function validateBody() {
-    const input = document.querySelector("textarea#body");
+    const input = document.querySelector("textarea#body.comment-body");
     if (input.value.trim() === "") {
       return false;
     } else if (input.validity.tooLong) {
       setValidationResult(
         input,
-        "Message can't be longer than 250 characters.",
+        "Comment can't be longer than 250 characters.",
       );
     } else {
       setValidationResult(input, "");
@@ -67,18 +67,24 @@ function CommentForm({ postId, onNewComment }) {
         <form onSubmit={onSubmit} className="form">
           <FormRow>
             <textarea
+              className="comment-body"
               type="text"
               name="body"
               id="body"
               maxLength={250}
-              rows={15}
+              rows={2}
               required
               aria-label="New Comment"
               placeholder="New Comment"
             />
           </FormRow>
           <div className="buttons">
-            <button type="submit" onClick={onSubmitClick} disabled={loading}>
+            <button
+              type="submit"
+              className="button"
+              onClick={onSubmitClick}
+              disabled={loading}
+            >
               Submit
             </button>
           </div>
