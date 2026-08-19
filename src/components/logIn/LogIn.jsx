@@ -31,6 +31,10 @@ function LogIn() {
     };
   }, [success, data, navigate]);
 
+  function onGuestClick() {
+    makeRequest("/auth/log-in/guest", "POST");
+  }
+
   function onUsernameChange(event) {
     const usernameElem = event.target;
     if (usernameElem.value.includes(" ")) {
@@ -150,6 +154,15 @@ function LogIn() {
           <div className="buttons">
             <button type="submit" onClick={onSubmitClick} disabled={loading}>
               Submit
+            </button>
+            or
+            <button
+              className="button"
+              type="button"
+              onClick={onGuestClick}
+              disabled={loading}
+            >
+              Use guest account
             </button>
           </div>
           {loading && <Loading size={4} />}

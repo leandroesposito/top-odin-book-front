@@ -1,8 +1,33 @@
 import { Link } from "react-router";
 import { getName, getUserId, isLogedIn } from "../../session/sessionManager";
 import "./Header.css";
+import useFetch from "../../hooks/useFetch";
+import { useEffect } from "react";
+import Loading from "./Loading/Loading";
 
 function Header() {
+  const { loading, data, success, makeRequest } = useFetch();
+
+  useEffect(() => {
+    let redirectTimeout = null;
+    if (data && data.user && success) {
+      logIn(data.user);
+      redirectTimeout = setTimeout(() => {
+        window.location.reload();
+      }, 100);
+    }
+
+    return () => {
+      if (redirectTimeout) {
+        clearTimeout(redirectTimeout);
+      }
+    };
+  }, [success, data]);
+
+  function onGuestClick() {
+    makeRequest("/auth/log-in/guest", "POST");
+  }
+
   return (
     <header className="header">
       <div className="left">
@@ -36,6 +61,15 @@ function Header() {
               <Link to={"/sign-up"} className="button">
                 Sign up
               </Link>
+              or
+              <button
+                className="button"
+                type="button"
+                onClick={onGuestClick}
+                disabled={loading}
+              >
+                {loading ? <Loading size={1} /> : "Use guest account"}
+              </button>
             </>
           )}
         </div>
