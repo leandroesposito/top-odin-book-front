@@ -127,20 +127,20 @@ export default function NewMessageForm({ currentChat }) {
         <pre className="sizer">{body}</pre>
         <div className="buttons">
           <div className="image-selector">
-            <input
-              className="message-pictures"
-              type="file"
-              name="pictures"
-              id="pictures"
-              onChange={onPicturesChange}
-              accept="image/*"
-              multiple
-            />
             <label
               htmlFor="pictures"
               className="file-input-label-button"
               aria-label="Select Pictures"
             >
+              <input
+                className="message-pictures"
+                type="file"
+                name="pictures"
+                id="pictures"
+                onChange={onPicturesChange}
+                accept="image/*"
+                multiple
+              />
               <Images />
               {imagesCount > 0 && (
                 <div className="files-count">{imagesCount}</div>

@@ -175,15 +175,15 @@ function ProfileForm() {
                   className="file-input-label-button"
                 >
                   <Image /> Select Picture
+                  <input
+                    type="file"
+                    name="profile-picture"
+                    id="profile-picture"
+                    onChange={validateProfilePicture}
+                    accept="image/*"
+                  />
                 </label>
               </div>
-              <input
-                type="file"
-                name="profile-picture"
-                id="profile-picture"
-                onChange={validateProfilePicture}
-                accept="image/*"
-              />
               <div className="profile-picture-selected-file-row">
                 {pictureToUpload !== null && (
                   <>

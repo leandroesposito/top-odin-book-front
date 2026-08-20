@@ -25,16 +25,25 @@
 }
 
 .profile-picture-row .file-input-label-button {
+  position: relative;
   align-self: center;
+  cursor: pointer;
+}
+.profile-picture-row
+  .file-input-label-button:has(input[type="file"]:focus-visible) {
+  outline: 2px solid var(--primary-800);
 }
 
 .profile-form-container input[type="file"] {
+  position: absolute;
   height: 0;
+  width: 0;
   padding: 0;
+  border: none;
 }
 
-.profile-form-container input[type="file"]:not(:focus) {
-  border: none;
+.profile-form-container input[type="file"]:focus-visible {
+  outline: none;
 }
 
 .picture-to-upload {

@@ -175,16 +175,16 @@ function PostForm() {
             <label htmlFor="pictures">Pictures</label>
             <label htmlFor="pictures" className="file-input-label-button">
               <Images /> Select Pictures
+              <input
+                className="post-pictures"
+                type="file"
+                name="pictures"
+                id="pictures"
+                onChange={validatePictures}
+                accept="image/*"
+                multiple
+              />
             </label>
-            <input
-              className="post-pictures"
-              type="file"
-              name="pictures"
-              id="pictures"
-              onChange={validatePictures}
-              accept="image/*"
-              multiple
-            />
             {picturesToUpload.length > 0 && (
               <>
                 <div className="pictures-to-upload">

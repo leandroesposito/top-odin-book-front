@@ -39,19 +39,29 @@
 
 .new-message-form textarea {
   background-color: var(--primary-200);
+  color: var(--primary-900);
 }
 
 .new-message-form .image-selector {
   position: relative;
 }
 
-.new-message-form .image-selector:has(input:focus-visible) label {
-  outline: 2px solid black;
+.new-message-form .image-selector label {
+  cursor: pointer;
+}
+.new-message-form .image-selector input.message-pictures:focus-visible {
+  outline: none;
+}
+
+.new-message-form
+  .image-selector
+  .file-input-label-button:has(input:focus-visible) {
+  outline: 2px solid var(--primary-800);
 }
 
 .new-message-form input[type="file"] {
-  width: 0;
-  height: 0;
+  width: 1px;
+  height: 1px;
   position: absolute;
 }
 
