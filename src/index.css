@@ -36,6 +36,41 @@
   --neutral-900: #232226;
 }
 
+.dark-mode {
+  /* Primary: Chaste Blossoms */
+  --primary-900: #fbf2ff;
+  --primary-800: #ebc8ff;
+  --primary-700: #d49dfc;
+  --primary-600: #b770f6;
+  --primary-500: #9244eb;
+  --primary-400: #5f20ba;
+  --primary-300: #3a1088;
+  --primary-200: #1f0857;
+  --primary-100: #0c0326;
+
+  /* Accent: Seaweed */
+  --accent-900: #f2fffb;
+  --accent-800: #c0fee8;
+  --accent-700: #8cfacc;
+  --accent-600: #57efa7;
+  --accent-500: #25d979;
+  --accent-400: #0cac4e;
+  --accent-300: #03802e;
+  --accent-200: #005318;
+  --accent-100: #002609;
+
+  /* Neutral */
+  --neutral-900: #fcfafc;
+  --neutral-800: #eeeaef;
+  --neutral-700: #dfdbe2;
+  --neutral-600: #d1ccd4;
+  --neutral-500: #c2bdc7;
+  --neutral-400: #99959f;
+  --neutral-300: #716e77;
+  --neutral-200: #4a484e;
+  --neutral-100: #232226;
+}
+
 body {
   margin: 0;
   font-size: 16px;

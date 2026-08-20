@@ -3,7 +3,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 1rem;
-  background: linear-gradient(to right, var(--primary-600), var(--primary-500));
+  background: linear-gradient(to right, var(--primary-500), var(--primary-600));
+  color: var(--primary-100);
 }
 
 .header a,
@@ -13,12 +14,11 @@
 
 .header .logo h1 {
   font-size: 2rem;
-  color: white;
+  color: var(--primary-100);
 }
 
-.header a.button,
-.header a.button:visited {
-  color: var(--primary-800);
+.header a.button {
+  color: var(--primary-700);
 }
 
 .logo h1 {
@@ -28,4 +28,50 @@
 .drop-down-items {
   display: flex;
   gap: 1rem;
+}
+
+label.dark-mode-switch-label {
+  position: relative;
+  font-size: 1.5rem;
+  width: 2em;
+  height: 1em;
+  border-radius: 1rem;
+  background-color: var(--primary-200);
+  outline: 2px solid var(--primary-200);
+  color: var(--primary-200);
+  cursor: pointer;
+}
+
+#dark-mode-switch {
+  appearance: none;
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+label.dark-mode-switch-label .dark-mode-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  content: "";
+  left: 0;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background-color: var(--primary-600);
+  transition: transform ease-in-out 0.25s;
+}
+
+label.dark-mode-switch-label #dark-mode-switch:checked + .dark-mode-icon {
+  transform: translateX(1em);
+}
+
+#dark-mode-switch:focus-visible {
+  outline: none;
+}
+
+label.dark-mode-switch-label:has(input:focus-visible) {
+  outline: 2px solid var(--accent-500);
 }

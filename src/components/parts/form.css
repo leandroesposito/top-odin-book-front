@@ -38,6 +38,7 @@ input#search {
   bottom: 1.6rem;
   background-color: unset;
   border: none;
+  color: var(--primary-700);
 }
 
 .form-container .buttons {
