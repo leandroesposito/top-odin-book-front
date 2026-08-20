@@ -24,8 +24,8 @@ export default function ChatMessage({ id, userId, body, createdAt, pictures }) {
         <div className="message-pictures">
           {pictures.map((p) => {
             return (
-              <div className="message-picture">
-                <img src={p.url} key={p.id} />
+              <div className="message-picture" key={p.id}>
+                <img src={p.url} />
               </div>
             );
           })}
