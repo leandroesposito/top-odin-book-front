@@ -34,6 +34,9 @@
   --neutral-700: #716e77;
   --neutral-800: #4a484e;
   --neutral-900: #232226;
+
+  --red-invalid-color: #a80000;
+  --green-valid-color: #006108;
 }
 
 .dark-mode {
@@ -69,6 +72,9 @@
   --neutral-300: #716e77;
   --neutral-200: #4a484e;
   --neutral-100: #232226;
+
+  --red-invalid-color: #ff7070;
+  --green-valid-color: #16ca25;
 }
 
 body {

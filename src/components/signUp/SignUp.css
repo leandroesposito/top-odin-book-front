@@ -1,16 +1,18 @@
 .valid {
-  color: green;
+  color: var(--green-valid-color);
 }
 
-.valid::after {
+.valid::before {
+  padding-right: 0.5rem;
   content: "✅";
 }
 
 .invalid {
-  color: red;
+  color: var(--red-invalid-color);
 }
 
-.invalid::after {
+.invalid::before {
+  padding-right: 0.5rem;
   content: "❌";
 }
 

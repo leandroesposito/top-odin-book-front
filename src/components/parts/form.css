@@ -48,11 +48,3 @@ input#search {
 .form-container label {
   color: var(--neutral-900);
 }
-
-.valid {
-  color: green;
-}
-
-.invalid {
-  color: red;
-}
