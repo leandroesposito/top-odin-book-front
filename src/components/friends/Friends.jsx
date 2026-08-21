@@ -40,18 +40,23 @@ export default function Friends() {
                 data.friends.map((user) => {
                   return <Friend user={user} key={user.id} />;
                 })
-              ) : (
+              ) : isLogedIn() && data.user.id === getUserId() ? (
                 <>
                   <div>
-                    Your friends list is empty, frind friends{" "}
+                    Your friends list is empty, find friends{" "}
                     <Link
                       to={"/suggested"}
-                      style={{ color: "var(--neutral-800)", fontWeight: 501 }}
+                      style={{
+                        color: "var(--neutral-800)",
+                        fontWeight: 501,
+                      }}
                     >
                       Here
                     </Link>
                   </div>
                 </>
+              ) : (
+                `${data.user.name}'s friends list is empty.`
               )
             ) : null}
           </div>
