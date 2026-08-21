@@ -68,11 +68,11 @@
 }
 
 .unread-count {
-  background-color: var(--green-alert-color);
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  color: white;
+  background-color: var(--accent-500);
+  color: #232226 !important;
   display: flex;
   justify-content: center;
   align-items: center;
