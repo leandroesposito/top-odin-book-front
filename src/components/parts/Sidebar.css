@@ -47,7 +47,20 @@ aside .item {
   justify-content: stretch;
 }
 
+aside .item .menu-link-content {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: stretch;
+  min-height: 2rem;
+}
+
+aside .item .menu-link-content .menu-link-caption {
+  flex: 1;
+}
+
 aside .item .menu-link {
+  flex: 1;
   display: flex;
   flex-direction: column;
   padding: 0.75rem 0;
@@ -65,7 +78,8 @@ aside .item .menu-link::after {
   transform-origin: left;
 }
 
-aside .item:hover .menu-link::after {
+aside .item:hover .menu-link::after,
+aside .item a:focus-visible .menu-link::after {
   transform: scaleX(1);
 }
 
