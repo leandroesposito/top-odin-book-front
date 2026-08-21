@@ -29,6 +29,7 @@
   font-size: 2rem;
   color: var(--neutral-900);
   overflow-x: hidden;
+  max-width: 100%;
 }
 
 .profile-description .name .buttons {

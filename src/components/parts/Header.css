@@ -21,6 +21,13 @@
   color: var(--primary-700);
 }
 
+.header .name {
+  text-wrap: nowrap;
+  max-width: 7rem;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
 .logo h1 {
   font-size: 1.5rem;
 }
@@ -74,4 +81,10 @@ label.dark-mode-switch-label #dark-mode-switch:checked + .dark-mode-icon {
 
 label.dark-mode-switch-label:has(input:focus-visible) {
   outline: 2px solid var(--accent-500);
+}
+
+@media screen and (max-width: 768px) {
+  .header .log-out-button {
+    display: none;
+  }
 }

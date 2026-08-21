@@ -97,9 +97,9 @@ function Header() {
             <>
               <Link to={`/profile/${getUserId()}`} className="button">
                 <Avatar data={getUser()} addAnchor={false} />
-                {getName()}
+                <div className="name">{getName()}</div>
               </Link>
-              <Link to={"/log-out"} className="button">
+              <Link to={"/log-out"} className="button log-out-button">
                 Log out
               </Link>
             </>
