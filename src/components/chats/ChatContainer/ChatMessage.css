@@ -1,6 +1,6 @@
 .chat-message {
   position: relative;
-  background-color: var(--neutral-300);
+  background-color: var(--neutral-200);
   color: var(--neutral-900);
   border-radius: 1rem;
   width: min(100%, 25rem);

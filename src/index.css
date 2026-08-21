@@ -2,65 +2,65 @@
   --red-alert-color: #ff6161;
   --green-alert-color: #4fb051;
 
-  /* Primary: Chaste Blossoms */
-  --primary-100: #fbf2ff;
-  --primary-200: #ebc8ff;
-  --primary-300: #d49dfc;
-  --primary-400: #b770f6;
-  --primary-500: #9244eb;
-  --primary-600: #5f20ba;
-  --primary-700: #3a1088;
-  --primary-800: #1f0857;
-  --primary-900: #0c0326;
+  /* Primary: Lavender */
+  --primary-100: #fcf2ff;
+  --primary-200: #f4d6ff;
+  --primary-300: #e6b9fb;
+  --primary-400: #d199f3;
+  --primary-500: #b476e3;
+  --primary-600: #7f49b4;
+  --primary-700: #552e85;
+  --primary-800: #321c55;
+  --primary-900: #150c26;
 
-  /* Accent: Seaweed */
-  --accent-100: #f2fffb;
-  --accent-200: #c0fee8;
-  --accent-300: #8cfacc;
-  --accent-400: #57efa7;
-  --accent-500: #25d979;
-  --accent-600: #0cac4e;
-  --accent-700: #03802e;
-  --accent-800: #005318;
-  --accent-900: #002609;
+  /* Accent: Mike Wazowski Green */
+  --accent-100: #f2fff9;
+  --accent-200: #bdffdb;
+  --accent-300: #87fcb6;
+  --accent-400: #50f589;
+  --accent-500: #1ce856;
+  --accent-600: #09b831;
+  --accent-700: #028718;
+  --accent-800: #00570a;
+  --accent-900: #002602;
 
   /* Neutral */
-  --neutral-100: #fcfafc;
-  --neutral-200: #eeeaef;
-  --neutral-300: #dfdbe2;
-  --neutral-400: #d1ccd4;
-  --neutral-500: #c2bdc7;
-  --neutral-600: #99959f;
-  --neutral-700: #716e77;
-  --neutral-800: #4a484e;
-  --neutral-900: #232226;
+  --neutral-100: #fafcfb;
+  --neutral-200: #eaeeec;
+  --neutral-300: #dbdfdd;
+  --neutral-400: #cbd0cd;
+  --neutral-500: #bcc2be;
+  --neutral-600: #949b96;
+  --neutral-700: #6c746e;
+  --neutral-800: #474d48;
+  --neutral-900: #222623;
 
   --red-invalid-color: #a80000;
   --green-valid-color: #006108;
 }
 
 .dark-mode {
-  /* Primary: Chaste Blossoms */
-  --primary-900: #fbf2ff;
-  --primary-800: #ebc8ff;
-  --primary-700: #d49dfc;
-  --primary-600: #b770f6;
-  --primary-500: #9244eb;
-  --primary-400: #5f20ba;
-  --primary-300: #3a1088;
-  --primary-200: #1f0857;
-  --primary-100: #0c0326;
+  /* Primary: Lavender */
+  --primary-900: #fcf2ff;
+  --primary-800: #f4d6ff;
+  --primary-700: #e6b9fb;
+  --primary-600: #d199f3;
+  --primary-500: #b476e3;
+  --primary-400: #7f49b4;
+  --primary-300: #552e85;
+  --primary-200: #321c55;
+  --primary-100: #150c26;
 
-  /* Accent: Seaweed */
-  --accent-900: #f2fffb;
-  --accent-800: #c0fee8;
-  --accent-700: #8cfacc;
-  --accent-600: #57efa7;
-  --accent-500: #25d979;
-  --accent-400: #0cac4e;
-  --accent-300: #03802e;
-  --accent-200: #005318;
-  --accent-100: #002609;
+  /* Accent: Mike Wazowski Green */
+  --accent-900: #f2fff9;
+  --accent-800: #bdffdb;
+  --accent-700: #87fcb6;
+  --accent-600: #50f589;
+  --accent-500: #1ce856;
+  --accent-400: #09b831;
+  --accent-300: #028718;
+  --accent-200: #00570a;
+  --accent-100: #002602;
 
   /* Neutral */
   --neutral-900: #fcfafc;
