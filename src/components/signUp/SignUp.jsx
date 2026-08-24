@@ -231,7 +231,7 @@ function SignUp() {
               onBlur={validateUsername}
               minLength={4}
               maxLength={20}
-              pattern="[a-z0-9_.]+"
+              pattern="[a-z0-9_.ñ]+"
               required
             />
           </FormRow>
