@@ -71,12 +71,18 @@
   display: block;
 }
 
-.like-post-button:hover {
-  background-color: var(--green-alert-color);
+.like-post-button svg {
+  transition: all ease-in-out 0.5s;
 }
 
-.dislike-post-button:hover {
-  background-color: var(--red-alert-color);
+.dislike-post-button svg {
+  transition: all ease-in-out 0.5s;
+  fill: var(--red-invalid-color);
+  color: var(--red-invalid-color);
+}
+
+.dislike-post-button:hover svg {
+  fill: var(--primary-300);
 }
 
 @media screen and (max-width: 768px) {
