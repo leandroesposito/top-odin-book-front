@@ -232,7 +232,7 @@ function ProfileForm() {
               name="birthdate"
               id="birthdate"
               max={new Date().toISOString().split("T")[0]}
-              defaultValue={birthdate.split("T")[0]}
+              defaultValue={birthdate ? birthdate.split("T")[0] : ""}
             />
           </FormRow>
           <div className="buttons">
