@@ -53,7 +53,7 @@ function Post(props) {
   const post = postProp || data.post;
 
   return (
-    <div className="post">
+    <article className="post">
       <FlashMessages data={data} errors={errors} />
       <div className="author">
         <Avatar data={post} size={3} />
@@ -64,11 +64,14 @@ function Post(props) {
           <PostButtons post={post} onDelete={onDelete} />
         )}
       </div>
-      <div className="post-date">
+      <time
+        className="post-date"
+        dateTime={new Date(post.created_at).toISOString()}
+      >
         <Link to={`/post/${post.id}`}>
           {new Date(post.created_at).toLocaleString()}
         </Link>
-      </div>
+      </time>
       <pre className="post-content">{post.body}</pre>
       {typeof post?.pictures !== "undefined" && post.pictures.length > 0 && (
         <div className="post-pictures">
@@ -92,7 +95,7 @@ function Post(props) {
       {viewComments && (
         <Comments postId={post.id} onDeleteComment={onDeleteComment} />
       )}
-    </div>
+    </article>
   );
 }
 
