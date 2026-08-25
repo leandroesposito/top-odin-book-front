@@ -51,21 +51,45 @@ function PostForm() {
   function validateBody() {
     const bodyElem = document.querySelector("textarea#body.post-body");
     const picturesInput = getPicturesInput();
+    const deletePictureCheckboxes = getDeletePictureCheckboxes();
 
     if (bodyElem.value.length > 500) {
       bodyElem.setCustomValidity(
         "Message must be between 0 and 500 characters inclusive.",
       );
       return false;
-    } else {
-      bodyElem.setCustomValidity("");
     }
 
-    if (bodyElem.value.trim() === "" && picturesInput.files.length === 0) {
+    bodyElem.setCustomValidity("");
+
+    const hasText = bodyElem.value.trim() !== "";
+    const hasNewPictures = picturesInput.files.length > 0;
+    const allCurrentPicturesDeleted =
+      deletePictureCheckboxes.length > 0 &&
+      deletePictureCheckboxes.every((cb) => cb.checked);
+    const hasCurrentPicturesLeft =
+      deletePictureCheckboxes.length > 0 && !allCurrentPicturesDeleted;
+
+    const isEmpty = !hasText && !hasNewPictures && !hasCurrentPicturesLeft;
+
+    if (isEmpty) {
+      if (!postId) {
+        bodyElem.setCustomValidity(
+          "Write something or select a picture to upload please.",
+        );
+      } else {
+        bodyElem.setCustomValidity(
+          "You can't leave an empty post, if you want to delete a post, use the delete button",
+        );
+      }
       return false;
-    } else {
-      return true;
     }
+
+    return true;
+  }
+
+  function getDeletePictureCheckboxes() {
+    return [...document.querySelectorAll(".delete-picture-checkbox")];
   }
 
   function getPicturesInput() {
@@ -164,6 +188,7 @@ function PostForm() {
                         name="delete-pictures"
                         id={picture.id}
                         value={picture.id}
+                        className="delete-picture-checkbox"
                       />
                       <label htmlFor={picture.id}>Delete</label>
                     </div>
