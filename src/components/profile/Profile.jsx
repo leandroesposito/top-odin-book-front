@@ -4,10 +4,15 @@ import useFetch from "../../hooks/useFetch";
 import FlashMessages from "../parts/FlashMessage/FlashMessages";
 import { Link, useNavigate, useParams } from "react-router";
 import Posts from "../post/Posts";
-import { getUserId, isLogedIn } from "../../session/sessionManager";
+import {
+  getUserId,
+  getUsername,
+  isLogedIn,
+  logOut,
+} from "../../session/sessionManager";
 import RelationsButtons from "./RelationsButtons";
 import Avatar from "../parts/Avatar";
-import { Mail } from "lucide-react";
+import { Mail, TriangleAlert } from "lucide-react";
 
 function Profile() {
   const { data, errors, makeRequest } = useFetch();
@@ -17,6 +22,15 @@ function Profile() {
   useEffect(() => {
     makeRequest(`/profiles/${userId}`, "GET");
   }, [makeRequest, userId]);
+
+  useEffect(() => {
+    if (data?.delete) {
+      setTimeout(() => {
+        logOut();
+        navigate("/");
+      }, 3000);
+    }
+  }, [data, navigate]);
 
   const onRelationButtonClick = useCallback(
     function onRelationButtonClick() {
@@ -31,6 +45,17 @@ function Profile() {
     });
   }
 
+  function onDeleteAccountClick() {
+    const securityAnswer = `delete ${getUsername()}`;
+    if (
+      prompt(
+        `Are you sure you want to DELETE your account? write "${securityAnswer}" to confirm`,
+      ).toLowerCase() === securityAnswer
+    ) {
+      makeRequest("/auth/account", "DELETE");
+    }
+  }
+
   return (
     <div className="profile">
       {typeof data?.profile !== "undefined" && (
@@ -42,9 +67,17 @@ function Profile() {
               {isLogedIn() && (
                 <div className="buttons">
                   {data.profile.userId === getUserId() ? (
-                    <Link to="/profile/edit" className="button">
-                      Edit profile
-                    </Link>
+                    <>
+                      <Link to="/profile/edit" className="button">
+                        Edit profile
+                      </Link>
+                      <button
+                        className="button delete-button delete-account-button"
+                        onClick={onDeleteAccountClick}
+                      >
+                        <TriangleAlert /> Delete account
+                      </button>
+                    </>
                   ) : (
                     <>
                       {data.profile.isFriend && (
