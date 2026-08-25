@@ -19,6 +19,7 @@
 }
 
 .profile-form-container .profile-picture-selected-file-row {
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -51,7 +52,7 @@
   padding: 0.5rem 1rem;
   border-radius: 1rem;
   font-weight: 501;
-  color: var(--neutral-900);
+  color: #232226 !important;
 }
 
 @media screen and (max-width: 768px) {

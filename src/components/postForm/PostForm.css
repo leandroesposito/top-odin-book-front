@@ -72,7 +72,7 @@ label.file-input-label-button:has(input[type="file"]:focus-visible) {
   padding: 0.5rem 1rem;
   border-radius: 1rem;
   font-weight: 501;
-  color: var(--neutral-900);
+  color: #232226 !important;
 }
 
 .clear-files-button {

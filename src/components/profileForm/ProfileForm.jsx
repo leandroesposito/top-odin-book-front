@@ -184,22 +184,20 @@ function ProfileForm() {
                   />
                 </label>
               </div>
-              <div className="profile-picture-selected-file-row">
-                {pictureToUpload !== null && (
-                  <>
-                    <div className="picture-to-upload">{pictureToUpload}</div>
-                    <div className="buttons">
-                      <button
-                        type="button"
-                        className="button"
-                        onClick={clearFileInput}
-                      >
-                        <CircleX /> Clear
-                      </button>
-                    </div>
-                  </>
-                )}
-              </div>
+              {pictureToUpload !== null && (
+                <div className="profile-picture-selected-file-row">
+                  <div className="picture-to-upload">{pictureToUpload}</div>
+                  <div className="buttons">
+                    <button
+                      type="button"
+                      className="button"
+                      onClick={clearFileInput}
+                    >
+                      <CircleX /> Clear
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </FormRow>
           <FormRow>
