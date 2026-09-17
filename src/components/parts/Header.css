@@ -1,5 +1,6 @@
 .header {
   display: flex;
+  gap: 1rem;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 1rem;
@@ -28,10 +29,6 @@
   text-overflow: ellipsis;
 }
 
-.logo h1 {
-  font-size: 1.5rem;
-}
-
 .drop-down-items {
   display: flex;
   gap: 1rem;
@@ -41,6 +38,7 @@ label.dark-mode-switch-label {
   position: relative;
   font-size: 1.5rem;
   width: 2em;
+  flex-shrink: 0;
   height: 1em;
   border-radius: 1rem;
   background-color: var(--primary-200);
@@ -84,7 +82,18 @@ label.dark-mode-switch-label:has(input:focus-visible) {
 }
 
 @media screen and (max-width: 768px) {
+  .header .logo h1 {
+    font-size: 1.5rem;
+  }
+
   .header .log-out-button {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .guest-button-span,
+  .guest-button {
     display: none;
   }
 }

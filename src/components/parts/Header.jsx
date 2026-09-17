@@ -111,9 +111,9 @@ function Header() {
               <Link to={"/sign-up"} className="button">
                 Sign up
               </Link>
-              or
+              <span className="guest-button-span">or</span>
               <button
-                className="button"
+                className="button guest-button"
                 type="button"
                 onClick={onGuestClick}
                 disabled={loading}
