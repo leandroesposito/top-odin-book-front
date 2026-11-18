@@ -18,8 +18,18 @@ A complete social network frontend application built with React, featuring posts
 ## Live Demo
 
 - **Application:** [https://top-odin-book-front.netlify.app](https://top-odin-book-front.netlify.app)
-- **Backend API:** [https://github.com/leandroesposito/top-odin-book-server/](https://github.com/leandroesposito/top-odin-book-server/)
+- **Backend API:** [https://github.com/leandroesposito/top-odin-book-server/](https://github.com/leandroesposito/top-odin-book-server/) \*The free servers may take a few seconds to respond on first request.
 - **Guest Login:** One-click demo access - no account required
+
+## Screenshots
+
+![Signup](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/1_signup.png)
+![Signup validations](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/2_signup_validations.png)
+![Home](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/3_home.png)
+![Post](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/4_post.png)
+![Messages](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/5_messages.png)
+![Suggested](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/6_suggested.png)
+![Dark Mode](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/7_dark_mode.png)
 
 ## Key Features
 
