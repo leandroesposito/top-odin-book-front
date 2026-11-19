@@ -23,13 +23,13 @@ A complete social network frontend application built with React, featuring posts
 
 ## Screenshots
 
-![Signup](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/1_signup.png)
-![Signup validations](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/2_signup_validations.png)
-![Home](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/3_home.png)
-![Post](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/4_post.png)
-![Messages](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/5_messages.png)
-![Suggested](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/6_suggested.png)
-![Dark Mode](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/7_dark_mode.png)
+![Signup](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/1_signup.jpg)
+![Signup validations](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/2_signup_validations.jpg)
+![Home](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/3_home.jpg)
+![Post](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/4_post.jpg)
+![Messages](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/5_messages.jpg)
+![Suggested](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/6_suggested.jpg)
+![Dark Mode](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/7_dark_mode.jpg)
 
 ## Tech Stack
 
