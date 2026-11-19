@@ -11,7 +11,7 @@ export default function Sidebar() {
   const { data, makeRequest } = useFetch();
 
   useEffect(() => {
-    if (isLogedIn && location.pathname !== "/messages") {
+    if (isLogedIn() && location.pathname !== "/messages") {
       makeRequest("/notifications");
       const interval = setInterval(() => {
         makeRequest("/notifications");
