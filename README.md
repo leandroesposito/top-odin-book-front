@@ -31,6 +31,18 @@ A complete social network frontend application built with React, featuring posts
 ![Suggested](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/6_suggested.png)
 ![Dark Mode](https://github.com/leandroesposito/top-odin-book-front/blob/main/screenshots/7_dark_mode.png)
 
+## Tech Stack
+
+| Category             | Technology                              |
+| -------------------- | --------------------------------------- |
+| **Framework**        | React 19                                |
+| **Routing**          | React Router 7                          |
+| **Build Tool**       | Vite                                    |
+| **Styling**          | CSS with custom properties              |
+| **Icons**            | Lucide React                            |
+| **HTTP Client**      | Native Fetch API                        |
+| **State Management** | Component-level state with custom hooks |
+
 ## Key Features
 
 ### Authentication
@@ -549,15 +561,3 @@ npm run build
 # Preview production build
 npm run preview
 ```
-
-## Tech Stack
-
-| Category             | Technology                              |
-| -------------------- | --------------------------------------- |
-| **Framework**        | React 19                                |
-| **Routing**          | React Router 7                          |
-| **Build Tool**       | Vite                                    |
-| **Styling**          | CSS with custom properties              |
-| **Icons**            | Lucide React                            |
-| **HTTP Client**      | Native Fetch API                        |
-| **State Management** | Component-level state with custom hooks |
