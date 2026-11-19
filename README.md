@@ -17,8 +17,8 @@ A complete social network frontend application built with React, featuring posts
 
 ## Live Demo
 
-- **Application:** [https://top-odin-book-front.netlify.app](https://top-odin-book-front.netlify.app)
-- **Backend API:** [https://github.com/leandroesposito/top-odin-book-server/](https://github.com/leandroesposito/top-odin-book-server/) \*The free servers may take a few seconds to respond on first request.
+- **Application:** [https://top-odin-book-front.netlify.app](https://top-odin-book-front.netlify.app)\*The free servers may take a few seconds to respond on first request.
+- **Backend API:** [https://github.com/leandroesposito/top-odin-book-server/](https://github.com/leandroesposito/top-odin-book-server/)
 - **Guest Login:** One-click demo access - no account required
 
 ## Screenshots
